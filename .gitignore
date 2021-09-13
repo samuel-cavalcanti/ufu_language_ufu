@@ -1,2 +1,4 @@
 .idea
 .vscode
+.coverage
+coverage.xml
