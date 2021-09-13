@@ -1,6 +1,6 @@
-from .token_scan import TokenScan
-from ..ufu_token import UfuTokenType
-from .one_char_ad_hoc_scanner import OneCharAdHocScanner
+from src.ufu_scanner.token_scan import TokenScan
+from src.ufu_token import UfuTokenType
+from src.ufu_scanner.ad_hoc_scanner.one_char_ad_hoc_scanner import OneCharAdHocScanner
 
 
 class SingleCharTokenScanCreator:
