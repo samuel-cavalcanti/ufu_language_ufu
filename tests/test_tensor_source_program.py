@@ -1,11 +1,22 @@
 import unittest
 
 from src.source_program.tensor_source_program import TensorSourceProgram, SourceProgramException
-    
-    
 
 
 class TensorSourceProgramTest(unittest.TestCase):
+
+    def test_to_string_tensor_source(self):
+        lines = ['0', '1', '2', '3']
+        source = TensorSourceProgram(lines)
+        assert str(source)
+    
+        lines = ['01', '11', '21', '31']
+        source = TensorSourceProgram(lines)
+        assert str(source)
+
+
+
+
     def test_current_and_next_char(self):
         lines = ['0', '1', '2', '3']
 
