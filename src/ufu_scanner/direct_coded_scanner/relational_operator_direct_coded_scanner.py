@@ -1,7 +1,7 @@
 from typing import Optional
 
-from src.ufu_token import UfuToken
-from src.ufu_scanner.token_scan import TokenScan, UfuTokenType
+from src.ufu_token import UfuToken, UfuTokenType
+from src.ufu_scanner.token_scan import TokenScan
 from src.source_program import SourceProgram
 
 from enum import Enum, auto

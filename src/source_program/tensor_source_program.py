@@ -1,15 +1,11 @@
 from typing import Tuple, List
+from .source_program import SourceProgram, SourceProgramException
 
 try:
     import numpy as np
 except ImportError:
-    print("Você não possuí a lib NUMPY, Eu preciso dela para o meu compilador :( !!")
+    print("Você não possuí a lib NUMPY, pro favor instale numpy: pip install numpy")
     exit(1)
-
-try:
-    from .source_program import SourceProgram, SourceProgramException
-except ImportError:
-    from source_program import SourceProgram, SourceProgramException
 
 
 class TensorSourceProgram(SourceProgram):
