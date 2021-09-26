@@ -1,10 +1,7 @@
-from src.source_program import SourceProgram, SourceProgramException
+from src.source_program import SourceProgram
 from src.ufu_scanner.token_scan import TokenScan
+from src.ufu_token import UfuToken
 
-try:
-    from ..ufu_token import UfuToken, UfuTokenType, UfuTokenException
-except ImportError:
-    from ufu_token import UfuToken, UfuTokenType, UfuTokenException
 
 from typing import List
 
@@ -38,6 +35,7 @@ class UfuScanner:
 
         if token is None:
             row, col = self.__source.current_pos()
-            raise ScannerException(f'unrecognized token, in row: {row}, column:{col} ')
+            raise ScannerException(
+                f'unrecognized token, in row: {row}, column:{col} ')
 
         return token
