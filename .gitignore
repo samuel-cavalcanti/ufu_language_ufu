@@ -2,7 +2,6 @@
 .vscode
 .coverage
 coverage.xml
-__pycache__/
 build/
 # Byte-compiled / optimized / DLL files
 __pycache__/
