@@ -13,6 +13,10 @@ python -m unittest discover  -v
 
 __OBS:__ TENHA numpy instalado
 
+```
+pip install numpy
+```
+
 
 
 ## Organização
