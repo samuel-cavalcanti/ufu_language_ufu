@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.2)  12 SEP 2021 19:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.6.2)  16 OCT 2021 19:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -472,199 +472,139 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 15.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 19.
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 15.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 19.
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Overfull \hbox (66.7501pt too wide) in paragraph at lines 18--42
+\OMS/cmsy/m/n/10.95 h[]i ! h[]ih[]ijh[]ih[]ij\OML/cmm/m/it/10.95 ^^O$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Overfull \hbox (3.66212pt too wide) in paragraph at lines 14--54
-\OMS/cmsy/m/n/10.95 h[]i ! h[]ijh[]ijh[]ijh[]ij$ $h[]ijh[]i$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Overfull \hbox (7.4642pt too wide) in paragraph at lines 18--42
+\OMS/cmsy/m/n/10.95 h[]i ! h[]ih[]ih[]ih[]i$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--54
+Underfull \hbox (badness 10000) in paragraph at lines 18--42
 
  []
 
@@ -672,26 +612,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--54
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
-
-Overfull \hbox (47.61005pt too wide) in paragraph at lines 59--139
-[][] 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+ [2] [3] [4]
+Overfull \hbox (95.96283pt too wide) in paragraph at lines 261--315
+[]  [] 
  []
 
-[2] [3] [4] (/home/samuel/University/UFU/compiladores_ufu/projeto/doc/build/compilador.aux) ) 
+[5] (/home/samuel/University/UFU/compiladores_ufu/projeto/doc/build/compilador.aux) ) 
 Here is how much of TeX's memory you used:
- 15282 strings out of 478994
- 305470 string characters out of 5864752
+ 15289 strings out of 478994
+ 305557 string characters out of 5864752
  618984 words of memory out of 5000000
- 32455 multiletter control sequences out of 15000+600000
- 409491 words of font info for 48 fonts, out of 8000000 for 9000
+ 32461 multiletter control sequences out of 15000+600000
+ 410437 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,12n,116p,470b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /home/samuel/University/UFU/compiladores_ufu/projeto/doc/build/compilador.pdf (4 pages, 94853 bytes).
+ 113i,14n,116p,470b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on /home/samuel/University/UFU/compiladores_ufu/projeto/doc/build/compilador.pdf (5 pages, 100833 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

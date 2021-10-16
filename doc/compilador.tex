@@ -9,60 +9,50 @@
 \begin{document}
 
 
-\section{Gramática livre de contexto}
 
-$\langle \text{Sofware} \rangle \rightarrow \textbf{programa} \langle\text{id}\rangle \langle\text{bloco}\rangle$\\\\
-$\langle\text{bloco}\rangle \rightarrow \textbf{\{} (\langle\text{listaVariaviaveis}\rangle \langle\text{listaComandos}\rangle | \epsilon) \textbf{\}}$\\\\
-$\langle\text{listaVariaviaveis}\rangle \rightarrow \langle\text{declaracaoDeVariavel}\rangle^{+}$\\\\
-$\langle\text{listaComandos}\rangle \rightarrow \langle\text{Comando}\rangle^{+}$\\\\
-$\langle\text{declaracaoDeVariavel}\rangle  \rightarrow \langle\text{tipo}\rangle \textbf{:} \langle\text{listaIds}\rangle \langle\text{PontoTerminacao}\rangle$\\\\
-$\langle\text{Comando}\rangle \rightarrow \langle\text{cmdSelecao}\rangle|\langle\text{cmdRepeticao}\rangle|\langle\text{cmdAtribuicao}\rangle$\\\\
+\section*{Primeira Etapa}
+
+\subsection*{Gramática livre de contexto}
+
+
+$\langle \text{Sofware} \rangle \rightarrow \textbf{programa } \textbf{id} \langle\text{bloco}\rangle$\\\\
+$\langle\text{bloco}\rangle \rightarrow \textbf{\{} \langle\text{conteudoBloco}\rangle \textbf{\}}$\\\\
+$\langle\text{conteudoBloco}\rangle \rightarrow \langle\text{listaVariaviaveis}\rangle \langle\text{conteudoBloco}\rangle | \langle\text{listaComandos}\rangle \langle\text{conteudoBloco}\rangle | \epsilon $\\\\
+$\langle\text{listaVariaviaveis}\rangle \rightarrow \langle\text{declaracaoDeVariavel}\rangle \langle\text{listaVariaviaveis}\rangle | \epsilon $\\\\
+$\langle\text{listaComandos}\rangle \rightarrow \langle\text{comando}\rangle \langle\text{listaComandos}\rangle | \epsilon $\\\\
+$\langle\text{declaracaoDeVariavel}\rangle  \rightarrow \langle\text{tipo}\rangle \textbf{:} \langle\text{listaIds}\rangle \textbf{;}$\\\\
+$\langle\text{comando}\rangle \rightarrow \langle\text{cmdSelecao}\rangle|\langle\text{cmdRepeticao}\rangle|\langle\text{cmdAtribuicao}\rangle$\\\\
 $\langle\text{tipo}\rangle  \rightarrow \textbf{int} | \textbf{real} | \textbf{ascii} $\\\\
-$\langle\text{listaIds}\rangle \rightarrow (\langle\text{id}\rangle | (\langle\text{id}\rangle\textbf{,}\langle\text{id}\rangle))^{+} \langle\text{PontoTerminacao}\rangle$\\\\
-$\langle\text{cmdSelecao}\rangle \rightarrow \textbf{if(} \langle\text{condicao}\rangle \textbf{)then} \langle\text{bloco}\rangle \textbf{else} \langle\text{bloco}\rangle  $\\\\
+$\langle\text{listaIds}\rangle \rightarrow \textbf{id} \langle\text{maisDeUmID} \rangle$\\\\
+$\langle\text{maisDeUmID}\rangle \rightarrow \textbf{,}\langle\text{listaIds}\rangle  | \epsilon$\\\\
+$\langle\text{cmdSelecao}\rangle \rightarrow \textbf{if(} \langle\text{condicao}\rangle \textbf{)then} \langle\text{bloco}\rangle \langle \text{comElse} \rangle$\\\\
+$\langle \text{comElse} \rangle \rightarrow  \textbf{else} \langle\text{bloco}\rangle | \epsilon \\\\$
 $\langle\text{cmdRepeticao}\rangle \rightarrow \langle\text{cmdRepeticaoWhile}\rangle|\langle\text{cmdRepeticaoDoUntil}\rangle$\\\\
 $\langle\text{cmdRepeticaoWhile}\rangle \rightarrow \textbf{while(} \langle\text{condicao}\rangle \textbf{)} \langle\text{bloco}\rangle $\\\\
-$\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)}$
-$\langle\text{PontoTerminacao}\rangle$\\\\
-$\langle\text{cmdAtribuicao}\rangle \rightarrow  \langle\text{id}\rangle \textbf{:=} \langle\text{expressao}\rangle \langle\text{PontoTerminacao}\rangle $\\\\
-$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{operacao}\rangle \langle\text{idOUConstante}\rangle$\\\\
-$\langle\text{operacao}\rangle \rightarrow  \langle\text{igual}\rangle | \langle\text{diferente}\rangle | \langle\text{menor}\rangle | \langle\text{maior}\rangle | $
-$ \langle\text{menorIgual}\rangle |\langle\text{maiorIgual}\rangle$\\\\
-$\langle\text{expressao}\rangle \rightarrow  (\langle\text{idOUConstante}\rangle \langle\text{operacaoAritimetica}\rangle \langle\text{idOUConstante}\rangle|$\\
-$\textbf{(} \langle\text{idOUConstante}\rangle \langle\text{operacaoAritimetica}\rangle \langle\text{idOUConstante}\rangle \textbf{)})^{+}$\\\\
-$\langle\text{operacaoAritimetica}\rangle \rightarrow \langle\text{add}\rangle|\langle\text{sub}\rangle|\langle\text{mul}\rangle|\langle\text{div}\rangle$\\\\
-$\langle\text{idOUConstante}\rangle \rightarrow  \langle\text{id}\rangle| \langle\text{constante}\rangle$\\\\
-$\langle\text{constante}\rangle \rightarrow \langle\text{ascii}\rangle| \langle\text{int}\rangle|\langle\text{real}\rangle$\\\\
-$\langle\text{add}\rangle \rightarrow   \textbf{+}$\\\\
-$\langle\text{sub}\rangle \rightarrow   \textbf{-}$\\\\
-$\langle\text{mul}\rangle \rightarrow   \textbf{*}$\\\\
-$\langle\text{div}\rangle \rightarrow   \textbf{/}$\\\\
-$\langle\text{igual}\rangle \rightarrow   \textbf{==}$\\\\
-$\langle\text{diferente}\rangle \rightarrow  <>$\\\\
-$\langle\text{menor}\rangle \rightarrow  <$\\\\
-$\langle\text{maior}\rangle \rightarrow  >$\\\\
-$\langle\text{menorIgual}\rangle \rightarrow  <=$\\\\
-$\langle\text{maiorIgual}\rangle \rightarrow  >=$\\\\
-$\langle\text{PontoTerminacao}\rangle \rightarrow \textbf{;}$\\\\
-$\langle\text{id}\rangle \rightarrow (\langle\text{ascii}\rangle)^{+}$\\\\
-$\langle\text{ascii}\rangle \rightarrow \text{a...z}|\text{A...Z}|\text{0...9}$\\\\
-$\langle\text{int}\rangle \rightarrow (\textbf{+}|\text{-}|\epsilon)(\langle\text{digits}\rangle)$\\\\
-$\langle\text{digits}\rangle \rightarrow (\text{0...9})^{+}$\\\\
-$\langle\text{real}\rangle \rightarrow \langle\text{int}\rangle \textbf{.}(\langle\text{digits}\rangle) | (\langle\text{notacaoCientifica}\rangle | \epsilon)$\\\\
-$\langle\text{notacaoCientifica}\rangle \rightarrow (\text{E}|\text{e})(+|-)(\langle\text{digits}\rangle)$\\\\
-% $\langle\text{comentario}\rangle \rightarrow \textbf{[}(\langle\text{id}\rangle)^{*}\textbf{]} $\\\\
+$\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)} \textbf{;}$\\\\
+$\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressao}\rangle \textbf{;} $\\\\
+$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{operadorLogico}\rangle   \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
+$\langle\text{condicao'}\rangle \rightarrow  \langle\text{operadorLogico}\rangle\langle\text{condicao}\rangle | \epsilon $\\\\
+$\langle\text{operadorLogico}\rangle \rightarrow   \textbf{==} | <> | < |  > |  <= | >=  $\\\\
+$\langle\text{expressao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{expressao'}\rangle$\\\\
+$\langle\text{expressao'}\rangle \rightarrow  \langle\text{operadorAritimetico}\rangle \langle\text{expressao}\rangle| \epsilon $\\\\
+$\langle\text{operadorAritimetico}\rangle \rightarrow   \textbf{ + } | \textbf{ - } | \textbf{ * } | \textbf{ / } $\\\\
+$\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id}| \langle\text{constante}\rangle$\\\\
+$\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstReal} | \textbf{ConstAscii} $\\\\
 
-\section{Tokens}
+
+
 
 
 \begin{table}[H]
+    \hspace{-0.7cm}
     \begin{tabular}{c|c|c}
         \hline
         \textbf{Lexemas}   & \textbf{Nome do Token}   & \textbf{Valor do atributo}  \\
         \hline
-        Qualquer ws        &        -                 &            -                \\
+         Qualquer ws        &        -                 &            -                \\
         \hline
-        programa           &        Programa          &            -                \\
+         programa           &        Programa          &            -                \\
         \hline
          if                &        If                &            -                \\
         \hline
@@ -77,13 +67,13 @@ $\langle\text{notacaoCientifica}\rangle \rightarrow (\text{E}|\text{e})(+|-)(\la
          until             &        Until             &            -                \\
         \hline
         \hline
-         Qualquer ID       &      Id                  &           posição na tabela          \\
+         Qualquer ID                          &      Id                   &           posição na tabela \\
         \hline
-         numeros inteiros            &      ConstInt             &           número Inteiro             \\
+         numeros inteiros                     &      ConstInt             &          posição na tabela  \\
         \hline
-         numeros reais               &      ConstReal            &          número em ponto flutuante  \\
+         numeros reais                        &      ConstReal            &          posição na tabela  \\
         \hline
-         letras e digitos da tabela ascii     &      ConstAscii           &          valor da tabela ascii  \\
+         letras e digitos da tabela ascii     &      ConstAscii           &         posição na tabela   \\
         \hline
         \hline
          ascii             &      TipoDeVariável      &           Ascii                      \\
@@ -108,17 +98,17 @@ $\langle\text{notacaoCientifica}\rangle \rightarrow (\text{E}|\text{e})(+|-)(\la
          )                 &        FechaParênteses   &            -                \\
         \hline
         \hline
-         $==$              &      OperadorRelacional  &            Igual                     \\
+         $==$              &      OperadorLógico  &            Igual                     \\
         \hline
-         $<>$              &      OperadorRelacional  &            Diferente                 \\
+         $<>$              &      OperadorLógico  &            Diferente                 \\
         \hline
-         $<$               &      OperadorRelacional  &            Menor                     \\
+         $<$               &      OperadorLógico  &            Menor                     \\
         \hline
-         $>$               &      OperadorRelacional  &            Maior                     \\
+         $>$               &      OperadorLógico  &            Maior                     \\
         \hline
-         $<=$              &      OperadorRelacional  &            Menor ou igual            \\
+         $<=$              &      OperadorLógico  &            Menor ou igual            \\
         \hline
-         $>=$              &      OperadorRelacional  &            Maior  ou igual           \\
+         $>=$              &      OperadorLógico  &            Maior  ou igual           \\
         \hline
         \hline
          $+$               &      OperadorAritmético  &            Soma                      \\
@@ -136,71 +126,197 @@ $\langle\text{notacaoCientifica}\rangle \rightarrow (\text{E}|\text{e})(+|-)(\la
 
         
     \end{tabular}
-    
-
+    \caption{Tabela de Tokens}
 \end{table}
 
 
 
-\begin{tabularx}{\textwidth}{c|X}
-    \hline
-    \textbf{Nome do Token} & \textbf{Expressão regular}   \\ 
-    \hline
-    programaPrograma & programa  \\  
-    \hline
-    If  & if \\
-    \hline
-    Then & then  \\
-    \hline
-    Else & else \\
-    \hline
-    While  & while \\
-    \hline
-    Do & do \\
-    \hline
-    Until  & until \\
-    \hline
-    \hline
-    PontoTerminação  & ; \\
-    \hline
-    Virgula  & , \\
-    \hline
-    DoisPontos  & : \\
-    \hline
-    AbreChaves  & \{ \\
-    \hline
-    FechaChaves  & \} \\
-    \hline
-    AbreParênteses  & ( \\
-    \hline
-    FechaParênteses  & ) \\
-    \hline
-    \hline
-    OperadorRelacional & $<> | == | > | < | <= | >= $   \\
-    \hline
-    OperadorAritmético & $ + | - | * | / |$   \\
-    \hline
-    \hline
-    OperadorAtribuição & := \\
-    \hline
-    \hline
-    TipoDeVariável & real $|$ ascii $|$ int \\  
-    \hline
-    \hline
-    Id & $(\text{(a..z)}|\text{(A..Z)}|\text{(0..9)})^{+}$ \\
-    \hline
-    \hline
-    ConstInt & ($+ | -| \text{(0..9)}$)(0..9)$^{+}$ \\
-    \hline
-    ConstReal & (ConstInt.(0..9)$^+$)($((E|e)(+|-)$(0..9)$^+) | \epsilon$)  \\
-    \hline
-    ConstAscii & '($\text{(a..z)}|\text{(A..Z)}|\text{(0..9)}$)' \\    
-    \hline
-    [\textit{comentário}] & [[ \^{}]]] \\
-    \hline
-\end{tabularx}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{c|X}
+        \hline
+        \textbf{Nome do Token} & \textbf{Expressão regular}   \\ 
+        \hline
+        programaPrograma & programa  \\  
+        \hline
+        If  & if \\
+        \hline
+        Then & then  \\
+        \hline
+        Else & else \\
+        \hline
+        While  & while \\
+        \hline
+        Do & do \\
+        \hline
+        Until  & until \\
+        \hline
+        \hline
+        PontoTerminação  & ; \\
+        \hline
+        Virgula  & , \\
+        \hline
+        DoisPontos  & : \\
+        \hline
+        AbreChaves  & \{ \\
+        \hline
+        FechaChaves  & \} \\
+        \hline
+        AbreParênteses  & ( \\
+        \hline
+        FechaParênteses  & ) \\
+        \hline
+        \hline
+        OperadorLógico & $<> | == | > | < | <= | >= $   \\
+        \hline
+        OperadorAritmético & $ + | - | * | / |$   \\
+        \hline
+        \hline
+        OperadorAtribuição & := \\
+        \hline
+        \hline
+        TipoDeVariável & real $|$ ascii $|$ int \\  
+        \hline
+        \hline
+        Id & $(\text{(a..z)}|\text{(A..Z)}|\text{(0..9)})^{+}$ \\
+        \hline
+        \hline
+        ConstInt & ($+ | -| \text{(0..9)}$)(0..9)$^{+}$ \\
+        \hline
+        ConstReal & (ConstInt.(0..9)$^+$)($((E|e)(+|-)$(0..9)$^+) | \epsilon$)  \\
+        \hline
+        ConstAscii & '($\text{(a..z)}|\text{(A..Z)}|\text{(0..9)}$)' \\    
+        \hline
+        [\textit{comentário}] & [[ \^{}]]] \\
+        \hline
+    \end{tabularx}
+    \caption{Token e sua respectiva expressão regular}
+\end{table}
+
+\newpage
+
+\section*{Segunda Etapa}
+
+
+\begin{figure}[H]
+    
+\end{figure}
+
+
+
+% FIRST[SOFTWARE] = programa
+% FIRST[BLOCO] = {
+% FIRST[CONTEUDOBLOCO] = id int real ascii if( while do
+% FIRST[LISTAVARIAVEIS] = int real ascii
+% FIRST[LISTACOMANDOS] = id if( while do
+% FIRST[DECLARACAODEVARIAVEL] = int real ascii
+% FIRST[COMANDO] = id if( while do
+% FIRST[TIPO] = int real ascii
+% FIRST[LISTAIDS] = id
+% FIRST[COMANDOSELECAO] = if(
+% FIRST[COMANDOREPETICAO] = while do
+% FIRST[COMANDOATRIBUICAO] = id
+% FIRST[maisDeUmID] = ,
+% FIRST[CONDICAO] = id
+% FIRST[COMELSE] = else
+% FIRST[CMDREPETICAOWHILE] = while
+% FIRST[CMDREPETICAODOUNTIL] = do
+% FIRST[EXPRESSAO] = id ConstInt ConstReal ConstAscii
+% FIRST[operadorLogico] = == <> < > <= >=
+% FIRST[CONDICAO'] = == <> < > <= >=
+% FIRST[IDOUCONSTATE] = id ConstInt ConstReal ConstAscii
+% FIRST[EXPRESSAO'] = + - * /
+% FIRST[OPERADORARITIMETICO] = + - * /
+% FIRST[CONSTANTE] = ConstInt ConstReal ConstAscii
+
+% FOLLOW[SOFTWARE] =
+% FOLLOW[BLOCO] = id $ } int real ascii if( else while do until
+% FOLLOW[CONTEUDOBLOCO] = }
+% FOLLOW[LISTAVARIAVEIS] = id } int real ascii if( while do
+% FOLLOW[LISTACOMANDOS] = id } int real ascii if( while do
+% FOLLOW[DECLARACAODEVARIAVEL] = id } int real ascii if( while do
+% FOLLOW[COMANDO] = id } int real ascii if( while do
+% FOLLOW[TIPO] = :
+% FOLLOW[LISTAIDS] = ;
+% FOLLOW[COMANDOSELECAO] = id } int real ascii if( while do
+% FOLLOW[COMANDOREPETICAO] = id } int real ascii if( while do
+% FOLLOW[COMANDOATRIBUICAO] = id } int real ascii if( while do
+% FOLLOW[maisDeUmID] = ;
+% FOLLOW[CONDICAO] = )
+% FOLLOW[COMELSE] = id } int real ascii if( while do
+% FOLLOW[CMDREPETICAOWHILE] = id } int real ascii if( while do
+% FOLLOW[CMDREPETICAODOUNTIL] = id } int real ascii if( while do
+% FOLLOW[EXPRESSAO] = ;
+% FOLLOW[operadorLogico] = id
+% FOLLOW[CONDICAO'] = )
+% FOLLOW[IDOUCONSTATE] = ; + - * /
+% FOLLOW[EXPRESSAO'] = ;
+% FOLLOW[OPERADORARITIMETICO] = id ConstInt ConstReal ConstAscii
+% FOLLOW[CONSTANTE] = ; + - * /
+
+
+
+
+
+\begin{table}[H]
+    \hspace{-3cm}
+    \begin{tabular}{c|c|c}
+        \hline
+        \textbf{Simbolo}     & \textbf{First}                      & \textbf{Follow}  \\
+        \hline
+        sofware              & programa                            & \$                \\
+        \hline
+         bloco               & \{                                  & id, \$ , \}, int, real, ascii, if, else, while, do, until\\
+        \hline
+        conteudoBloco        & id, int, real, ascii, if, while, do & \}        \\
+        \hline
+        listaVariaviaveis    & int, real, ascii                    & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        listaComandos        & id, if, while, do                   & id ,\}, int, real, ascii, if, while, do \\
+        \hline
+        declaracaoDeVariavel & int, real, ascii                    & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        comando              & id if while do                      & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        tipo                 & int, real, ascii                    & : \\
+        \hline
+        listaIds             & id                                  & ; \\
+        \hline
+        cmdSelecao           & if                                  & id, \}, int, real, ascii, if, while, do\\
+        \hline
+        cmdRepeticao         & while, do                           & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        cmdAtribuicao        & id                                  & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        maisDeUmID           & ,                                   & ; \\
+        \hline
+        condicao             & id                                  & ) \\
+        \hline
+        condicao'            & ==, $<>$ , $<$, $>$, $<=$ , $>=$    & ) \\
+        \hline
+        comElse              & else                                & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        cmdRepeticaoWhile    & while                               & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        cmdRepeticaoDoUntil  & do                                  & id, \}, int, real, ascii, if, while, do \\
+        \hline
+        expressao            & id, ConstInt, ConstReal, ConstAscii & ; \\
+        \hline
+        expressao'           & + , - , * , /                       & ; \\
+        \hline
+        operadorLogico       & ==, $<>$ , $<$, $>$, $<=$ , $>=$    & id  \\
+        \hline
+        operadorAritimetico  &  + , - , * , /                      & id, ConstInt, ConstReal, ConstAscii \\
+        \hline
+        idOUConstante        & id, ConstInt, ConstReal, ConstAscii &  ;, +, -, * ,/ \\
+        \hline
+        constante            & ConstInt, ConstReal, ConstAscii     &  ;, +, -, * ,/   \\
+        \hline
+    \end{tabular}
+    \caption{\textbf{FIRST} e \textbf{FOLLOW} dos símbolos da gramática}
+\end{table}
+
+
+
 
 
 \end{document}
-
-%(\langle\text{int}\rangle \textbf{.}(\textbf{0...9})^{+} (\textbf{E}(+|-)()))
