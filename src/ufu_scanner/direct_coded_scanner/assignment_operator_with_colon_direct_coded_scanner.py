@@ -1,7 +1,6 @@
 from typing import Optional
 
 from src.ufu_token import UfuToken, UfuTokenType
-from src.ufu_scanner.token_scan import TokenScan
 from src.source_program import SourceProgram
 from enum import Enum, auto
 
@@ -11,7 +10,7 @@ class State(Enum):
     colon = auto()
 
 
-class AssignmentOperatorWithColonInDirectCodedScanner(TokenScan):
+class AssignmentOperatorWithColonInDirectCodedScanner:
 
     def scan(self, source: SourceProgram) -> Optional[UfuToken]:
         state = State.initial_state

@@ -3,7 +3,7 @@ from enum import Enum, auto
 
 from src.source_program import SourceProgram
 from src.ufu_token import UfuToken, UfuTokenType
-from src.ufu_scanner.ufu_scanner import TokenScan, ScannerException
+from src.ufu_scanner.ufu_scanner import  ScannerException
 
 
 class State(Enum):
@@ -14,7 +14,7 @@ class State(Enum):
     making_exponent_value = auto()
 
 
-class ConstNumberDirectCodedScanner(TokenScan):
+class ConstNumberDirectCodedScanner:
     __initial_pos = Tuple[int, int]
     _lexema: str
 

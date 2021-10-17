@@ -1,6 +1,5 @@
 from typing import Optional
 
-from src.ufu_scanner.token_scan import TokenScan
 from src.ufu_token import UfuToken,UfuTokenType
 from src.source_program import SourceProgram
 
@@ -8,7 +7,7 @@ class OneCharScannerException(Exception):
     pass
 
 
-class OneCharAdHocScanner(TokenScan):
+class OneCharAdHocScanner:
     """
         OneCharScanner é um scan que utiliza a ideia Ad hoc,
         mas sem verificar o próximo char para confirmar o token.

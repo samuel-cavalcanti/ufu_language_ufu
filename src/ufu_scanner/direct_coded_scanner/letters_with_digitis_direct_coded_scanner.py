@@ -1,7 +1,6 @@
 from typing import Optional, Tuple
 
 from src.ufu_token import UfuToken,UfuTokenType
-from src.ufu_scanner.token_scan import TokenScan
 from src.source_program import SourceProgram
 from enum import Enum, auto
 
@@ -12,7 +11,7 @@ class State(Enum):
     final_state = auto()
 
 
-class LettersWithDigitsDirectCodedScanner(TokenScan):
+class LettersWithDigitsDirectCodedScanner:
     __lexema: str
     __initial_pos: Tuple[int, int]
 

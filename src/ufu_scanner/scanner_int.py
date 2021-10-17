@@ -1,4 +1,4 @@
-from ..ufu_token.ufu_tokken import UfuTokenType, UfuToken
+from src.ufu_token import UfuTokenType, UfuToken
 
 
 class ScanIntException(Exception):

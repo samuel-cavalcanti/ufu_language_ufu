@@ -1,5 +1,5 @@
 from typing import Tuple, List
-from .source_program import SourceProgram, SourceProgramException
+from .source_program import SourceProgramException
 
 try:
     import numpy as np
@@ -8,7 +8,7 @@ except ImportError:
     exit(1)
 
 
-class TensorSourceProgram(SourceProgram):
+class TensorSourceProgram:
     __tensor: np.ndarray
     __current_row: int
     __current_col: int

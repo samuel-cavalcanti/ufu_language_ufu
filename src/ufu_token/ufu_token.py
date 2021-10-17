@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum, auto
-from typing import Optional, Type, Tuple
+from typing import Optional, Tuple
 
 
 class UfuTokenException(Exception):

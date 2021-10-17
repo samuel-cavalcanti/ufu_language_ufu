@@ -1,7 +1,6 @@
 from typing import Optional
 
 from src.ufu_token import UfuToken, UfuTokenType
-from src.ufu_scanner.token_scan import TokenScan
 from src.source_program import SourceProgram
 
 from enum import Enum, auto
@@ -25,7 +24,7 @@ class RelacionalOperators(Enum):
     DIFFERENT = '<>'
 
 
-class RelacionalOperatorDirectCodedScanner(TokenScan):
+class RelacionalOperatorDirectCodedScanner:
     __initial_pos: Tuple[int, int]
     __state: State
     __source: SourceProgram
