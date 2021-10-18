@@ -8,28 +8,35 @@ class UfuTokenException(Exception):
 
 
 class UfuTokenType(Enum):
+    EPSILON = auto()
+
     OPEN_PARENTHESES = auto()
+    OPEN_BRACKETS = auto()
     CLOSE_PARENTHESES = auto()
+    CLOSE_BRACKETS = auto()
+
     ADD = auto()
     SUB = auto()
     DIV = auto()
     MUL = auto()
-    OPEN_BRACKETS = auto()
-    CLOSE_BRACKETS = auto()
+
     SEMICOLON = auto()
     COMMA = auto()
     COLON = auto()
+
     ASSIGNMENT_OPERATOR = auto()
     RELATIONAL_OPERATOR = auto()
+    ARITHMETIC_OPERATOR = auto()
+
     IF = auto()
     THEN = auto()
     ELSE = auto()
     WHILE = auto()
     DO = auto()
     UNTIL = auto()
-    SOFTWARE = auto()
+    PROGRAMA = auto()
     TYPE_VARIABLE = auto()
-    VARIABLE_ID = auto()
+    ID = auto()
     CONST_INT = auto()
     CONST_REAL = auto()
     CONST_ASCII = auto()
