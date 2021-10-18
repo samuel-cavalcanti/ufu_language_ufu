@@ -2,6 +2,7 @@ import unittest
 from typing import List
 
 from src.source_program import TensorSourceProgram, SourceProgram
+from src.source_program.source_program import SourceProgramException
 from src.ufu_scanner import UfuScanner, Scanner
 from src.ufu_scanner.ad_hoc_scanner import SingleCharTokenScanCreator
 from src.ufu_scanner.direct_coded_scanner import LettersWithDigitsDirectCodedScanner
@@ -9,8 +10,9 @@ from src.ufu_scanner.direct_coded_scanner import RelacionalOperatorDirectCodedSc
 from src.ufu_scanner.direct_coded_scanner import ConstNumberDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import ConstAsciiDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import AssignmentOperatorWithColonInDirectCodedScanner
-
 from src.ufu_parser import UfuParser, UfuParserException
+
+import os
 
 
 class FullTestCase(unittest.TestCase):
@@ -34,11 +36,11 @@ class FullTestCase(unittest.TestCase):
         return UfuScanner(token_scanners=ad_hoc_scanners + direct_coded_scanners, source=source)
 
     def test_wrong_file(self):
+        directory = 'tests/wrong_sources'
+        for wrong_file in os.listdir(directory):
+            print(f"file path: {os.path.join(directory, wrong_file)}")
 
-        wrong_files = ['tests/wrong_files/wrong_software_1.ufu', 'tests/wrong_files/wrong_software_2.ufu']
-
-        for wrong_file in wrong_files:
-            lines = self.__load_file(wrong_file)
+            lines = self.__load_file(os.path.join(directory, wrong_file))
 
             tensor_source = TensorSourceProgram(lines)
 
@@ -47,8 +49,29 @@ class FullTestCase(unittest.TestCase):
             parser = UfuParser(scanner)
 
             with self.assertRaises(UfuParserException):
-                while True:
-                    parser.run()
+                parser.run()
+
+        
+    def test_correct_source(self):
+        directory = 'tests/correct_sources'
+        for correct_file in os.listdir(directory):
+            print(f"file path: {os.path.join(directory, correct_file)}")
+
+            lines = self.__load_file(os.path.join(directory, correct_file))
+
+            tensor_source = TensorSourceProgram(lines)
+
+            scanner = self.__create_full_scanner(tensor_source)
+
+            parser = UfuParser(scanner)
+
+            try:
+                parser.run()
+            except SourceProgramException as error:
+                """ esse erro deve ocorrer com o fim do arquivo """
+                print(error)
+               
+              
 
 
 if __name__ == '__main__':

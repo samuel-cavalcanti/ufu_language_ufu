@@ -87,5 +87,7 @@ class UfuParser:
         self.__expressao.id_ou_constante = self.__id_ou_constante
         self.__expressao.expressao_linha = self.__expressao_linha
 
+        self.__expressao_linha.expressao = self.__expressao
+
     def run(self):
         self.__sofware.parse(self.__consumer)

@@ -10,5 +10,4 @@ class ExpressaoLinha:
         if consumer.eat(UfuTokenType.ARITHMETIC_OPERATOR):
             self.expressao.parse(consumer)
 
-
         return True

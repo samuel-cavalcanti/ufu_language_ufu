@@ -1,0 +1,17 @@
+programa teste2
+[ Programa com erro sintatico ]
+{
+    int: x; real : y;
+
+    x := 0;
+
+    while (x <> 10)
+    {
+        x := x+1;
+    }
+
+    if (x == 10) then
+    {
+        y:=1;
+    }
+}

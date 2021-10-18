@@ -11,11 +11,14 @@ class ScannerConsumer:
     def __init__(self, scanner: Scanner):
         self.__scanner = scanner
         self.__current_token = scanner.get_token()
+        print(f"current token {self.__current_token}")
 
 
     def eat(self, expected_type: UfuTokenType) -> bool:
         if expected_type == self.__current_token.type:
             self.__current_token = self.__scanner.get_token()
+            print(f"current token {self.__current_token}")
+
             return True
 
         return False

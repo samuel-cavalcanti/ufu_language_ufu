@@ -10,7 +10,10 @@ class CmdSelecao:
 
     def parse(self, consumer: ScannerConsumer) -> bool:
         if consumer.eat(UfuTokenType.IF):
+            consumer.eat_or_exception(UfuTokenType.OPEN_PARENTHESES)
             self.condicao.parse(consumer)
+            consumer.eat_or_exception(UfuTokenType.CLOSE_PARENTHESES)
+
             consumer.eat_or_exception(UfuTokenType.THEN)
             self.bloco.parse(consumer)
             self.com_else.parse(consumer)

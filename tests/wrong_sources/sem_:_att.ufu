@@ -1,0 +1,8 @@
+ [este e o meu primeiro programa ufu]
+programa meuPrograma {
+    int:numeroInteiro;[este he meu numero inteiro]
+    ascii letra;[essa he uma letra]
+
+    numeroInteiro := 5;
+    ascii := '5';
+}

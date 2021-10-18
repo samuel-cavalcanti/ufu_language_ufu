@@ -10,8 +10,10 @@ class Comando:
     def parse(self, consumer: ScannerConsumer) -> bool:
         if self.cmd_selecao.parse(consumer):
             return True
+
         if self.cmd_repeticao.parse(consumer):
             return True
+            
         if self.cmd_atribuicao.parse(consumer):
             return True
 

@@ -12,6 +12,7 @@ class CmdRepeticaoWhile:
             consumer.eat_or_exception(UfuTokenType.OPEN_PARENTHESES)
             self.condicao.parse(consumer)
             consumer.eat_or_exception(UfuTokenType.CLOSE_PARENTHESES)
+            self.bloco.parse(consumer)
             return True
         return False
     

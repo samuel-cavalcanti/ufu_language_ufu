@@ -1,6 +1,6 @@
 from typing import Optional, Tuple
 
-from src.ufu_token import UfuToken,UfuTokenType
+from src.ufu_token import UfuToken, UfuTokenType
 from src.source_program import SourceProgram
 from enum import Enum, auto
 
@@ -42,6 +42,7 @@ class LettersWithDigitsDirectCodedScanner:
 
     def __create_token(self):
         lower_lexema = self.__lexema.lower()
+        
         if lower_lexema == 'programa':
             return UfuToken(token_type=UfuTokenType.PROGRAMA, pos=self.__initial_pos)
         elif lower_lexema == 'if':
