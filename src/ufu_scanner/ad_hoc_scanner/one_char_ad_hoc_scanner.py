@@ -1,7 +1,8 @@
 from typing import Optional
 
-from src.ufu_token import UfuToken,UfuTokenType
+from src.ufu_token import UfuToken, UfuTokenType
 from src.source_program import SourceProgram
+
 
 class OneCharScannerException(Exception):
     pass
@@ -26,6 +27,6 @@ class OneCharAdHocScanner:
         char = source.current_char()
 
         if char == self.__char:
-            return UfuToken(token_type=self.__token_type, pos=source.current_pos())
+            return UfuToken(token_type=self.__token_type, pos=source.current_pos(), content=char)
 
         return None

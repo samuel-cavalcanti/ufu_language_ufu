@@ -43,7 +43,7 @@ class LettersWithDigitsDirectCodedScanner:
     def __create_token(self):
         lower_lexema = self.__lexema.lower()
         if lower_lexema == 'programa':
-            return UfuToken(token_type=UfuTokenType.SOFTWARE, pos=self.__initial_pos)
+            return UfuToken(token_type=UfuTokenType.PROGRAMA, pos=self.__initial_pos)
         elif lower_lexema == 'if':
             return UfuToken(token_type=UfuTokenType.IF, pos=self.__initial_pos)
         elif lower_lexema == 'then':
@@ -63,4 +63,4 @@ class LettersWithDigitsDirectCodedScanner:
         elif lower_lexema == 'real':
             return UfuToken(token_type=UfuTokenType.TYPE_VARIABLE, pos=self.__initial_pos, content='real')
         else:
-            return UfuToken(token_type=UfuTokenType.VARIABLE_ID, pos=self.__initial_pos, content=self.__lexema)
+            return UfuToken(token_type=UfuTokenType.ID, pos=self.__initial_pos, content=self.__lexema)

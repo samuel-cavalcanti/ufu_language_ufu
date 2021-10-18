@@ -1,3 +1,5 @@
+from typing import List
+
 from src.ufu_scanner.token_scan import TokenScan
 from src.ufu_token import UfuTokenType
 from src.ufu_scanner.ad_hoc_scanner.one_char_ad_hoc_scanner import OneCharAdHocScanner
@@ -26,42 +28,45 @@ class SingleCharTokenScanCreator:
             raise NotImplementedError(f"token type: {token_type}")
         return creator()
 
+    def create_all_token_scans(self) -> List[TokenScan]:
+        return [create_method() for create_method in self.__creators.values()]
+
     @staticmethod
-    def __create_semi_colon_scan():
+    def __create_semi_colon_scan() -> TokenScan:
         return OneCharAdHocScanner(char=';', token_type=UfuTokenType.SEMICOLON)
 
     @staticmethod
-    def __create_comma_scan():
+    def __create_comma_scan() -> TokenScan:
         return OneCharAdHocScanner(char=',', token_type=UfuTokenType.COMMA)
 
     @staticmethod
-    def __create_open_brackets_scan():
+    def __create_open_brackets_scan() -> TokenScan:
         return OneCharAdHocScanner(char='{', token_type=UfuTokenType.OPEN_BRACKETS)
 
     @staticmethod
-    def __create_close_brackets_scan():
+    def __create_close_brackets_scan() -> TokenScan:
         return OneCharAdHocScanner(char='}', token_type=UfuTokenType.CLOSE_BRACKETS)
 
     @staticmethod
-    def __create_open_parentheses_scan():
+    def __create_open_parentheses_scan() -> TokenScan:
         return OneCharAdHocScanner(char='(', token_type=UfuTokenType.OPEN_PARENTHESES)
 
     @staticmethod
-    def __create_close_parentheses_scan():
+    def __create_close_parentheses_scan() -> TokenScan:
         return OneCharAdHocScanner(char=')', token_type=UfuTokenType.CLOSE_PARENTHESES)
 
     @staticmethod
-    def __create_add_arithmetic_operation_scan():
-        return OneCharAdHocScanner(char='+', token_type=UfuTokenType.ADD)
+    def __create_add_arithmetic_operation_scan() -> TokenScan:
+        return OneCharAdHocScanner(char='+', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
 
     @staticmethod
-    def __create_subtract_arithmetic_operation_scan():
-        return OneCharAdHocScanner(char='-', token_type=UfuTokenType.SUB)
+    def __create_subtract_arithmetic_operation_scan() -> TokenScan:
+        return OneCharAdHocScanner(char='-', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
 
     @staticmethod
-    def __create_multiplication_arithmetic_operation_scan():
-        return OneCharAdHocScanner(char='*', token_type=UfuTokenType.MUL)
+    def __create_multiplication_arithmetic_operation_scan() -> TokenScan:
+        return OneCharAdHocScanner(char='*', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
 
     @staticmethod
-    def __create_divide_arithmetic_operation_scan():
-        return OneCharAdHocScanner(char='/', token_type=UfuTokenType.DIV)
+    def __create_divide_arithmetic_operation_scan() -> TokenScan:
+        return OneCharAdHocScanner(char='/', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
