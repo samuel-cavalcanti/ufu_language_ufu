@@ -92,29 +92,29 @@ class DirectCodedScannersTest(unittest.TestCase):
         expected_tokens = [
             UfuToken(token_type=UfuTokenType.TYPE_VARIABLE,
                      pos=(0, 0), content='int'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(0, 4), content='a'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(0, 6), content='b'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(0, 8), content='c'),
 
             UfuToken(token_type=UfuTokenType.TYPE_VARIABLE,
                      pos=(1, 0), content='ascii'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(1, 6), content='c'),
 
             UfuToken(token_type=UfuTokenType.TYPE_VARIABLE,
                      pos=(2, 0), content='real'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(2, 5), content='numero10'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(2, 14), content='numero11'),
 
             UfuToken(token_type=UfuTokenType.IF, pos=(3, 0)),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(3, 4), content='a'),
-            UfuToken(token_type=UfuTokenType.VARIABLE_ID,
+            UfuToken(token_type=UfuTokenType.ID,
                      pos=(3, 9), content='b'),
             UfuToken(token_type=UfuTokenType.THEN, pos=(3, 12)),
             UfuToken(token_type=UfuTokenType.ELSE, pos=(3, 20)),
@@ -136,19 +136,20 @@ class DirectCodedScannersTest(unittest.TestCase):
 
         assert '+12' == lines[0][4:-1]
 
-        start_index = 4
+        start_column = 4
+        start_row = 0
 
         limit = len(lines) * len(lines[-1]) + 10
 
         expected_tokens = [
-            UfuToken(token_type=UfuTokenType.CONST_INT, pos=(0, start_index), content=numbers[0]),
-            UfuToken(token_type=UfuTokenType.CONST_INT, pos=(1, start_index), content=numbers[1]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(2, start_index), content=numbers[2]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(3, start_index), content=numbers[3]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(4, start_index), content=numbers[4]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(5, start_index), content=numbers[5]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(6, start_index), content=numbers[6]),
-            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(len(numbers) - 1, start_index), content=numbers[-1]),
+            UfuToken(token_type=UfuTokenType.CONST_INT, pos=(start_row, start_column), content=numbers[0]),
+            UfuToken(token_type=UfuTokenType.CONST_INT, pos=(start_row + 1, start_column), content=numbers[1]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(start_row + 2, start_column), content=numbers[2]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(start_row + 3, start_column), content=numbers[3]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(start_row + 4, start_column), content=numbers[4]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(start_row + 5, start_column), content=numbers[5]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(start_row + 6, start_column), content=numbers[6]),
+            UfuToken(token_type=UfuTokenType.CONST_REAL, pos=(len(numbers) - 1, start_column), content=numbers[-1]),
         ]
 
         source = TensorSourceProgram(lines)

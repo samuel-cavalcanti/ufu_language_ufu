@@ -9,13 +9,10 @@ class TensorSourceProgramTest(unittest.TestCase):
         lines = ['0', '1', '2', '3']
         source = TensorSourceProgram(lines)
         assert str(source)
-    
+
         lines = ['01', '11', '21', '31']
         source = TensorSourceProgram(lines)
         assert str(source)
-
-
-
 
     def test_current_and_next_char(self):
         lines = ['0', '1', '2', '3']
@@ -45,7 +42,7 @@ class TensorSourceProgramTest(unittest.TestCase):
         for i in range(len(lines)):
             for j in range(2):
                 pos = source.current_pos()
-                assert pos == (i, j), f"Error: pos: {pos}, i:{i} j:{j}"
+                assert pos == (i , j), f"Error: pos: {pos}, i:{i} j:{j}"
                 if i == last_index_line and j == last_index_col:
                     pass
                 else:

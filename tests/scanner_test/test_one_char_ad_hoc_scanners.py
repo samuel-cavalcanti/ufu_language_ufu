@@ -1,11 +1,11 @@
 import unittest
 
-
 from src.source_program.tensor_source_program import TensorSourceProgram, SourceProgramException
 from src.ufu_token.ufu_token import UfuToken, UfuTokenType
 from src.ufu_scanner.ad_hoc_scanner.one_char_ad_hoc_scanner import OneCharAdHocScanner, OneCharScannerException
 from src.ufu_scanner.ufu_scanner import UfuScanner, ScannerException
-from src.ufu_scanner.single_char_token_scan_creator import SingleCharTokenScanCreator
+from src.ufu_scanner.ad_hoc_scanner.single_char_token_scan_creator import SingleCharTokenScanCreator
+
 
 class OneCharAdHocScannersTest(unittest.TestCase):
 
@@ -51,17 +51,18 @@ class OneCharAdHocScannersTest(unittest.TestCase):
         last_index = len(lines[0]) - 1
         assert '{' == lines[0][0]
         assert '}' == lines[0][last_index]
+        assert ';' == lines[0][7]
+        assert ';' == lines[0][15]
 
-        expected_tokens = [UfuToken(token_type=UfuTokenType.OPEN_BRACKETS, pos=(0, 0)),
-                           UfuToken(token_type=UfuTokenType.CLOSE_BRACKETS, pos=(0, last_index))]
+        expected_tokens = [UfuToken(token_type=UfuTokenType.OPEN_BRACKETS, pos=(0, 0), content='{'),
+                           UfuToken(token_type=UfuTokenType.SEMICOLON, pos=(0, 7), content=';'),
+                           UfuToken(token_type=UfuTokenType.SEMICOLON, pos=(0, 15), content=';'),
+                           UfuToken(token_type=UfuTokenType.CLOSE_BRACKETS, pos=(0, last_index), content='}')]
 
         for_limit = len(lines[0]) + 10
         source = TensorSourceProgram(lines)
 
-        scanners = [
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.OPEN_BRACKETS),
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.CLOSE_BRACKETS),
-        ]
+        scanners = SingleCharTokenScanCreator().create_all_token_scans()
         ufu_scanner = UfuScanner(token_scanners=scanners, source=source)
 
         tokens = self.__run_scanner(scanner=ufu_scanner, it_limit=for_limit)
@@ -75,17 +76,14 @@ class OneCharAdHocScannersTest(unittest.TestCase):
         assert '(' == lines[1][7]
         assert ')' == lines[1][9]
         expected_tokens = [
-            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(0, 0)),
-            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(1, 1)),
-            UfuToken(UfuTokenType.OPEN_PARENTHESES, pos=(1, 7)),
-            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(1, 9)),
+            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(0, 0), content=')'),
+            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(1, 1), content=')'),
+            UfuToken(UfuTokenType.OPEN_PARENTHESES, pos=(1, 7), content='('),
+            UfuToken(UfuTokenType.CLOSE_PARENTHESES, pos=(1, 9), content=')'),
         ]
         tensor_source = TensorSourceProgram(lines=lines)
 
-        token_scanners = [
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.OPEN_PARENTHESES),
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.CLOSE_PARENTHESES),
-        ]
+        token_scanners = SingleCharTokenScanCreator().create_all_token_scans()
 
         ufu_scanner = UfuScanner(token_scanners=token_scanners, source=tensor_source)
 
@@ -121,22 +119,18 @@ class OneCharAdHocScannersTest(unittest.TestCase):
 
         source = TensorSourceProgram(line)
         expected_tokens = [
-            UfuToken(token_type=UfuTokenType.ADD, pos=(0, 1)),
-            UfuToken(token_type=UfuTokenType.SUB, pos=(0, 3)),
-            UfuToken(token_type=UfuTokenType.MUL, pos=(0, 5)),
-            UfuToken(token_type=UfuTokenType.DIV, pos=(0, 7)),
+            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 1), content='+'),
+            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 3), content='-'),
+            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 5), content='*'),
+            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 7), content='/'),
         ]
-        scanners = [
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.ADD),
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.SUB),
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.MUL),
-            SingleCharTokenScanCreator().create_token_scan(UfuTokenType.DIV),
-        ]
+        scanners = SingleCharTokenScanCreator().create_all_token_scans()
         ufu_scanner = UfuScanner(token_scanners=scanners, source=source)
 
         results_tokens = self.__run_scanner(scanner=ufu_scanner, it_limit=len(line[0]) + 10)
 
         self.assertEqual(results_tokens, expected_tokens)
 
-        if __name__ == '__main__':
-            unittest.main()
+
+if __name__ == '__main__':
+    unittest.main()
