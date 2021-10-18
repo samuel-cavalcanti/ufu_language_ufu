@@ -3,7 +3,6 @@ from src.ufu_scanner import Scanner
 from src.ufu_parser.parser import UfuParserException
 
 
-
 class ScannerConsumer:
     __scanner: Scanner
     __current_token: UfuToken
@@ -12,7 +11,6 @@ class ScannerConsumer:
         self.__scanner = scanner
         self.__current_token = scanner.get_token()
         print(f"current token {self.__current_token}")
-
 
     def eat(self, expected_type: UfuTokenType) -> bool:
         if expected_type == self.__current_token.type:

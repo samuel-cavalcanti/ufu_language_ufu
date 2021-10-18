@@ -51,7 +51,6 @@ class FullTestCase(unittest.TestCase):
             with self.assertRaises(UfuParserException):
                 parser.run()
 
-        
     def test_correct_source(self):
         directory = 'tests/correct_sources'
         for correct_file in os.listdir(directory):
@@ -70,8 +69,6 @@ class FullTestCase(unittest.TestCase):
             except SourceProgramException as error:
                 """ esse erro deve ocorrer com o fim do arquivo """
                 print(error)
-               
-              
 
 
 if __name__ == '__main__':

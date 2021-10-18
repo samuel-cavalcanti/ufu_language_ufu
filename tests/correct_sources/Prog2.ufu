@@ -1,5 +1,5 @@
 programa teste2
-[ Programa com erro sintatico ]
+[ Programa sem erro sintatico ]
 {
     int: x; real : y;
 
