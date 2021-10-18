@@ -17,12 +17,11 @@
 
 $\langle \text{Sofware} \rangle \rightarrow \textbf{programa } \textbf{id} \langle\text{bloco}\rangle$\\\\
 $\langle\text{bloco}\rangle \rightarrow \textbf{\{} \langle\text{conteudoBloco}\rangle \textbf{\}}$\\\\
-$\langle\text{conteudoBloco}\rangle \rightarrow \langle\text{listaVariaviaveis}\rangle \langle\text{conteudoBloco}\rangle | \langle\text{listaComandos}\rangle \langle\text{conteudoBloco}\rangle | \epsilon $\\\\
+$\langle\text{conteudoBloco}\rangle \rightarrow \langle\text{listaVariaviaveis}\rangle \langle\text{listaComandos}\rangle$\\\\
 $\langle\text{listaVariaviaveis}\rangle \rightarrow \langle\text{declaracaoDeVariavel}\rangle \langle\text{listaVariaviaveis}\rangle | \epsilon $\\\\
 $\langle\text{listaComandos}\rangle \rightarrow \langle\text{comando}\rangle \langle\text{listaComandos}\rangle | \epsilon $\\\\
-$\langle\text{declaracaoDeVariavel}\rangle  \rightarrow \langle\text{tipo}\rangle \textbf{:} \langle\text{listaIds}\rangle \textbf{;}$\\\\
+$\langle\text{declaracaoDeVariavel}\rangle  \rightarrow \textbf{TipoDeVariavel} \textbf{:} \langle\text{listaIds}\rangle \textbf{;}$\\\\
 $\langle\text{comando}\rangle \rightarrow \langle\text{cmdSelecao}\rangle|\langle\text{cmdRepeticao}\rangle|\langle\text{cmdAtribuicao}\rangle$\\\\
-$\langle\text{tipo}\rangle  \rightarrow \textbf{int} | \textbf{real} | \textbf{ascii} $\\\\
 $\langle\text{listaIds}\rangle \rightarrow \textbf{id} \langle\text{maisDeUmID} \rangle$\\\\
 $\langle\text{maisDeUmID}\rangle \rightarrow \textbf{,}\langle\text{listaIds}\rangle  | \epsilon$\\\\
 $\langle\text{cmdSelecao}\rangle \rightarrow \textbf{if(} \langle\text{condicao}\rangle \textbf{)then} \langle\text{bloco}\rangle \langle \text{comElse} \rangle$\\\\
@@ -31,14 +30,12 @@ $\langle\text{cmdRepeticao}\rangle \rightarrow \langle\text{cmdRepeticaoWhile}\r
 $\langle\text{cmdRepeticaoWhile}\rangle \rightarrow \textbf{while(} \langle\text{condicao}\rangle \textbf{)} \langle\text{bloco}\rangle $\\\\
 $\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)} \textbf{;}$\\\\
 $\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressao}\rangle \textbf{;} $\\\\
-$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{operadorLogico}\rangle   \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
-$\langle\text{condicao'}\rangle \rightarrow  \langle\text{operadorLogico}\rangle\langle\text{condicao}\rangle | \epsilon $\\\\
-$\langle\text{operadorLogico}\rangle \rightarrow   \textbf{==} | <> | < |  > |  <= | >=  $\\\\
+$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico}   \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
+$\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\text{condicao}\rangle | \epsilon $\\\\
 $\langle\text{expressao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{expressao'}\rangle$\\\\
-$\langle\text{expressao'}\rangle \rightarrow  \langle\text{operadorAritimetico}\rangle \langle\text{expressao}\rangle| \epsilon $\\\\
-$\langle\text{operadorAritimetico}\rangle \rightarrow   \textbf{ + } | \textbf{ - } | \textbf{ * } | \textbf{ / } $\\\\
-$\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id}| \langle\text{constante}\rangle$\\\\
-$\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstReal} | \textbf{ConstAscii} $\\\\
+$\langle\text{expressao'}\rangle \rightarrow  \textbf{operadorAritimetico}\langle\text{expressao}\rangle| \epsilon $\\\\
+$\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstInt } | \textbf{ ConstReal } | \textbf{ ConstAscii}$\\\\
+
 
 
 
@@ -76,11 +73,11 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
          letras e digitos da tabela ascii     &      ConstAscii           &         posição na tabela   \\
         \hline
         \hline
-         ascii             &      TipoDeVariável      &           Ascii                      \\
+         ascii             &      TipoDeVariavel      &           Ascii                      \\
         \hline
-         int               &      TipoDeVariável      &           Inteiro                    \\
+         int               &      TipoDeVariavel      &           Inteiro                    \\
         \hline
-         real              &      TipoDeVariável      &           Real                       \\
+         real              &      TipoDeVariavel      &           Real                       \\
         \hline
         \hline
          ;                 &        PontoTerminação   &            -                \\
@@ -174,7 +171,7 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
         OperadorAtribuição & := \\
         \hline
         \hline
-        TipoDeVariável & real $|$ ascii $|$ int \\  
+        TipoDeVariavel & real $|$ ascii $|$ int \\  
         \hline
         \hline
         Id & $(\text{(a..z)}|\text{(A..Z)}|\text{(0..9)})^{+}$ \\
@@ -202,17 +199,16 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
 \end{figure}
 
 
-
 % FIRST[SOFTWARE] = programa
 % FIRST[BLOCO] = {
-% FIRST[CONTEUDOBLOCO] = id int real ascii if( while do
+% FIRST[CONTEUDOBLOCO] = id int real ascii if while do
 % FIRST[LISTAVARIAVEIS] = int real ascii
-% FIRST[LISTACOMANDOS] = id if( while do
+% FIRST[LISTACOMANDOS] = id if while do
 % FIRST[DECLARACAODEVARIAVEL] = int real ascii
-% FIRST[COMANDO] = id if( while do
+% FIRST[COMANDO] = id if while do
 % FIRST[TIPO] = int real ascii
 % FIRST[LISTAIDS] = id
-% FIRST[COMANDOSELECAO] = if(
+% FIRST[COMANDOSELECAO] = if
 % FIRST[COMANDOREPETICAO] = while do
 % FIRST[COMANDOATRIBUICAO] = id
 % FIRST[maisDeUmID] = ,
@@ -229,22 +225,22 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
 % FIRST[CONSTANTE] = ConstInt ConstReal ConstAscii
 
 % FOLLOW[SOFTWARE] =
-% FOLLOW[BLOCO] = id $ } int real ascii if( else while do until
+% FOLLOW[BLOCO] = id $ } if else while do until
 % FOLLOW[CONTEUDOBLOCO] = }
-% FOLLOW[LISTAVARIAVEIS] = id } int real ascii if( while do
-% FOLLOW[LISTACOMANDOS] = id } int real ascii if( while do
-% FOLLOW[DECLARACAODEVARIAVEL] = id } int real ascii if( while do
-% FOLLOW[COMANDO] = id } int real ascii if( while do
+% FOLLOW[LISTAVARIAVEIS] = id } if while do
+% FOLLOW[LISTACOMANDOS] = }
+% FOLLOW[DECLARACAODEVARIAVEL] = id } int real ascii if while do
+% FOLLOW[COMANDO] = id } if while do
 % FOLLOW[TIPO] = :
 % FOLLOW[LISTAIDS] = ;
-% FOLLOW[COMANDOSELECAO] = id } int real ascii if( while do
-% FOLLOW[COMANDOREPETICAO] = id } int real ascii if( while do
-% FOLLOW[COMANDOATRIBUICAO] = id } int real ascii if( while do
+% FOLLOW[COMANDOSELECAO] = id } if while do
+% FOLLOW[COMANDOREPETICAO] = id } if while do
+% FOLLOW[COMANDOATRIBUICAO] = id } if while do
 % FOLLOW[maisDeUmID] = ;
 % FOLLOW[CONDICAO] = )
-% FOLLOW[COMELSE] = id } int real ascii if( while do
-% FOLLOW[CMDREPETICAOWHILE] = id } int real ascii if( while do
-% FOLLOW[CMDREPETICAODOUNTIL] = id } int real ascii if( while do
+% FOLLOW[COMELSE] = id } if while do
+% FOLLOW[CMDREPETICAOWHILE] = id } if while do
+% FOLLOW[CMDREPETICAODOUNTIL] = id } if while do
 % FOLLOW[EXPRESSAO] = ;
 % FOLLOW[operadorLogico] = id
 % FOLLOW[CONDICAO'] = )
@@ -265,51 +261,43 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
         \hline
         sofware              & programa                            & \$                \\
         \hline
-         bloco               & \{                                  & id, \$ , \}, int, real, ascii, if, else, while, do, until\\
+         bloco               & \{                                  & id, \$ , \}, if, else, while, do, until\\
         \hline
-        conteudoBloco        & id, int, real, ascii, if, while, do & \}        \\
+        conteudoBloco        & id, TipoDeVariavel, if, while, do   & \}        \\
         \hline
-        listaVariaviaveis    & int, real, ascii                    & id, \}, int, real, ascii, if, while, do \\
+        listaVariaviaveis    & TipoDeVariavel                      & id, \}, if, while, do \\
         \hline
-        listaComandos        & id, if, while, do                   & id ,\}, int, real, ascii, if, while, do \\
+        listaComandos        & id, if, while, do                   & \} \\
         \hline
-        declaracaoDeVariavel & int, real, ascii                    & id, \}, int, real, ascii, if, while, do \\
+        declaracaoDeVariavel & TipoDeVariavel                      & id, \}, TipoDeVariavel, if, while, do \\
         \hline
-        comando              & id if while do                      & id, \}, int, real, ascii, if, while, do \\
-        \hline
-        tipo                 & int, real, ascii                    & : \\
+        comando              & id if while do                      & id, \}, if, while, do \\
         \hline
         listaIds             & id                                  & ; \\
         \hline
-        cmdSelecao           & if                                  & id, \}, int, real, ascii, if, while, do\\
+        cmdSelecao           & if                                  & id, \}, if, while, do\\
         \hline
-        cmdRepeticao         & while, do                           & id, \}, int, real, ascii, if, while, do \\
+        cmdRepeticao         & while, do                           & id, \}, if, while, do \\
         \hline
-        cmdAtribuicao        & id                                  & id, \}, int, real, ascii, if, while, do \\
+        cmdAtribuicao        & id                                  & id, \}, if, while, do \\
         \hline
         maisDeUmID           & ,                                   & ; \\
         \hline
         condicao             & id                                  & ) \\
         \hline
-        condicao'            & ==, $<>$ , $<$, $>$, $<=$ , $>=$    & ) \\
+        condicao'            & operadorLogico                      & ) \\
         \hline
-        comElse              & else                                & id, \}, int, real, ascii, if, while, do \\
+        comElse              & else                                & id, \}, if, while, do \\
         \hline
-        cmdRepeticaoWhile    & while                               & id, \}, int, real, ascii, if, while, do \\
+        cmdRepeticaoWhile    & while                               & id, \}, if, while, do \\
         \hline
-        cmdRepeticaoDoUntil  & do                                  & id, \}, int, real, ascii, if, while, do \\
+        cmdRepeticaoDoUntil  & do                                  & id, \}, if, while, do \\
         \hline
         expressao            & id, ConstInt, ConstReal, ConstAscii & ; \\
         \hline
-        expressao'           & + , - , * , /                       & ; \\
+        expressao'           & operadorAritimetico                 & ; \\
         \hline
-        operadorLogico       & ==, $<>$ , $<$, $>$, $<=$ , $>=$    & id  \\
-        \hline
-        operadorAritimetico  &  + , - , * , /                      & id, ConstInt, ConstReal, ConstAscii \\
-        \hline
-        idOUConstante        & id, ConstInt, ConstReal, ConstAscii &  ;, +, -, * ,/ \\
-        \hline
-        constante            & ConstInt, ConstReal, ConstAscii     &  ;, +, -, * ,/   \\
+        idOUConstante        & id, ConstInt, ConstReal, ConstAscii &  ; ,operadorAritimetico \\
         \hline
     \end{tabular}
     \caption{\textbf{FIRST} e \textbf{FOLLOW} dos símbolos da gramática}
@@ -334,8 +322,6 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
    \includegraphics[]{grafos_sintaticos/declaracao_de_variavel.png}
 
    \includegraphics[]{grafos_sintaticos/comando.png}
-
-   \includegraphics[]{grafos_sintaticos/tipo.png}
 
    \includegraphics[]{grafos_sintaticos/lista_ids.png}
 
@@ -362,7 +348,7 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
 
     \includegraphics[scale=1.3]{grafos_sintaticos/cmd_atribuicao.png}
 
-    \includegraphics[scale=2.0]{grafos_sintaticos/condicao.png}
+    \includegraphics[scale=1.5]{grafos_sintaticos/condicao.png}
 
     \includegraphics[scale=2.3]{grafos_sintaticos/condicao'.png}
 
@@ -370,13 +356,6 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
 \end{figure}
 
 
-\newpage
-
-\begin{figure}[H]
-    \includegraphics[scale=2.5]{grafos_sintaticos/operador_logico.png}
-
-   
-\end{figure}
 
 
 \newpage
@@ -387,15 +366,14 @@ $\langle\text{constante}\rangle \rightarrow  \textbf{ConstInt} | \textbf{ConstRe
 
     \includegraphics[scale=2.0]{grafos_sintaticos/expressao'.png}
 
-    \includegraphics[scale=2.0]{grafos_sintaticos/operador_aritimetico.png}
 \end{figure}
 
 \newpage
 
 \begin{figure}[H]
-    \includegraphics[scale=2.0]{grafos_sintaticos/id_ou_constante.png}
+    \includegraphics[scale=1.1]{grafos_sintaticos/id_ou_constante.png}
 
-    \includegraphics[scale=2.0]{grafos_sintaticos/constante.png}
+    % \includegraphics[scale=2.0]{grafos_sintaticos/constante.png}
 \end{figure}
 
 
