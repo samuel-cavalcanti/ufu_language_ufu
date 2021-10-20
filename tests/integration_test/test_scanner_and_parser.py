@@ -11,7 +11,7 @@ from src.ufu_scanner.direct_coded_scanner import ConstNumberDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import ConstAsciiDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import AssignmentOperatorWithColonInDirectCodedScanner
 from src.ufu_parser import UfuParser, UfuParserException
-
+from src.ufu_parser.syntax_tree import SyntaxTreeGraphvizVisualizer, SyntaxNode
 import os
 
 
@@ -21,6 +21,12 @@ class FullTestCase(unittest.TestCase):
     def __load_file(file_name: str) -> List[str]:
         with open(file_name) as ufu_file:
             return ufu_file.readlines()
+
+    @staticmethod
+    def __generate_graphviz_file(root: SyntaxNode, output_file: str):
+        with open(output_file, 'w') as file:
+            content_file = SyntaxTreeGraphvizVisualizer().generate_graphviz_file(root)
+            file.write(content_file)
 
     @staticmethod
     def __create_full_scanner(source: SourceProgram) -> Scanner:
@@ -36,7 +42,7 @@ class FullTestCase(unittest.TestCase):
         return UfuScanner(token_scanners=ad_hoc_scanners + direct_coded_scanners, source=source)
 
     def test_wrong_file(self):
-        directory = 'tests/wrong_sources'
+        directory = 'tests/assets/wrong_sources'
         for wrong_file in os.listdir(directory):
             print(f"file path: {os.path.join(directory, wrong_file)}")
 
@@ -52,7 +58,7 @@ class FullTestCase(unittest.TestCase):
                 parser.run()
 
     def test_correct_source(self):
-        directory = 'tests/correct_sources'
+        directory = 'tests/assets/correct_sources'
         for correct_file in os.listdir(directory):
             print(f"file path: {os.path.join(directory, correct_file)}")
 
@@ -64,8 +70,5 @@ class FullTestCase(unittest.TestCase):
 
             parser = UfuParser(scanner)
 
-            try:
-                parser.run()
-            except SourceProgramException as error:
-                """ esse erro deve ocorrer com o fim do arquivo """
-                print(error)
+            tree = parser.run()
+            self.__generate_graphviz_file(tree.root, f'tests/assets/dot_files/correct_sources_{correct_file}.dot')
