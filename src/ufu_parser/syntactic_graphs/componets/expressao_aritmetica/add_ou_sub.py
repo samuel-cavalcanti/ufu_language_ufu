@@ -3,16 +3,14 @@ from src.ufu_parser.scanner_consumer import ScannerConsumer
 from src.ufu_token import UfuTokenType
 
 
-class CmdRepeticao:
-    cmd_repeticao_while: SyntacticGraph
-    cmd_repeticao_do_until: SyntacticGraph
+class AddOuSUb:
 
     def parse(self, consumer: ScannerConsumer) -> bool:
 
-        if self.cmd_repeticao_while.parse(consumer):
+        if consumer.eat(UfuTokenType.ADD):
             return True
 
-        if self.cmd_repeticao_do_until.parse(consumer):
+        if consumer.eat(UfuTokenType.SUB):
             return True
 
         return False

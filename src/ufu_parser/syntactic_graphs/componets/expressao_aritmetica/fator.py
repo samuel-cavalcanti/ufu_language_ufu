@@ -3,15 +3,15 @@ from src.ufu_parser.scanner_consumer import ScannerConsumer
 from src.ufu_token import UfuTokenType
 
 
-class CmdAtribuicao:
-    expressao: SyntacticGraph
+class Fator:
 
     def parse(self, consumer: ScannerConsumer) -> bool:
         if consumer.eat(UfuTokenType.ID):
-            consumer.eat_or_exception(UfuTokenType.ASSIGNMENT_OPERATOR)
-            self.expressao.parse(consumer)
-            consumer.eat_or_exception(UfuTokenType.SEMICOLON)
-
             return True
+
+        if consumer.eat(UfuTokenType.CONST_INT):
+            return True
+
+        consumer.eat_or_exception(UfuTokenType.CONST_REAL)
 
         return False

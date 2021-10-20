@@ -3,11 +3,12 @@ from src.ufu_parser.scanner_consumer import ScannerConsumer
 from src.ufu_token import UfuTokenType
 
 
-class ExpressaoLinha:
-    expressao: SyntacticGraph
+class ExpressaoAritmeticaLinha:
+    add_ou_sub: SyntacticGraph
+    termo: SyntacticGraph
 
     def parse(self, consumer: ScannerConsumer) -> bool:
-        if consumer.eat(UfuTokenType.ARITHMETIC_OPERATOR):
-            self.expressao.parse(consumer)
+        if self.add_ou_sub.parse(consumer):
+            self.termo.parse(consumer)
 
         return True

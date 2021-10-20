@@ -28,17 +28,26 @@ class UfuParser:
 
         self.__cmd_selecao = CmdSelecao()
         self.__com_else = ComElse()
-        self.__cmd_repeticao = CmdRepeticao()
         self.__cmd_repeticao_while = CmdRepeticaoWhile()
         self.__cmd_repeticao_do_until = CmdRepeticaoDoUntil()
         self.__cmd_atribuicao = CmdAtribuicao()
 
+        self.__id_ou_constante = IdOuConstante()
+
         self.__condicao = Condicao()
         self.__condicao_linha = CondicaoLinha()
 
-        self.__expressao = Expressao()
-        self.__expressao_linha = ExpressaoLinha()
-        self.__id_ou_constante = IdOuConstante()
+        self.__expressao_aritmetica_ou_const_ascii = ExpressaoAritmeticaOuConstAscii()
+
+        self.__expressao_aritmetica = ExpressaoAritmetica()
+        self.__expressao_aritmetica_linha = ExpressaoAritmeticaLinha()
+
+        self.__termo = Termo()
+        self.__termo_linha = TermoLinha()
+
+        self.__fator = Fator()
+        self.__add_ou_sub = AddOuSUb()
+        self.__mult_ou_div = MultOuDiv()
 
     def __connect_graphs(self):
         self.__sofware.bloco = self.__bloco
@@ -55,7 +64,9 @@ class UfuParser:
         self.__declaracao_de_variavel.lista_ids = self.__lista_ids
 
         self.__comando.cmd_selecao = self.__cmd_selecao
-        self.__comando.cmd_repeticao = self.__cmd_repeticao
+
+        self.__comando.cmd_repeticao_while = self.__cmd_repeticao_while
+        self.__comando.cmd_repeticao_do_until = self.__cmd_repeticao_do_until
         self.__comando.cmd_atribuicao = self.__cmd_atribuicao
 
         self.__lista_ids.mais_de_um_id = self.__mais_de_um_id
@@ -68,26 +79,33 @@ class UfuParser:
 
         self.__com_else.bloco = self.__bloco
 
-        self.__cmd_repeticao.cmd_repeticao_while = self.__cmd_repeticao_while
-        self.__cmd_repeticao.cmd_repeticao_do_until = self.__cmd_repeticao_do_until
-
         self.__cmd_repeticao_while.condicao = self.__condicao
         self.__cmd_repeticao_while.bloco = self.__bloco
 
         self.__cmd_repeticao_do_until.bloco = self.__bloco
         self.__cmd_repeticao_do_until.condicao = self.__condicao
 
-        self.__cmd_atribuicao.expressao = self.__expressao
-
         self.__condicao.id_ou_constante = self.__id_ou_constante
         self.__condicao.condicao_linha = self.__condicao_linha
 
         self.__condicao_linha.condicao = self.__condicao
 
-        self.__expressao.id_ou_constante = self.__id_ou_constante
-        self.__expressao.expressao_linha = self.__expressao_linha
 
-        self.__expressao_linha.expressao = self.__expressao
+        self.__cmd_atribuicao.expressao_aritmetica_ou_const_ascii = self.__expressao_aritmetica_ou_const_ascii
+
+        self.__expressao_aritmetica_ou_const_ascii.expressao_aritmetica = self.__expressao_aritmetica
+
+        self.__expressao_aritmetica.termo = self.__termo
+        self.__expressao_aritmetica.expressao_aritmetica_linha = self.__expressao_aritmetica_linha
+
+        self.__expressao_aritmetica_linha.add_ou_sub = self.__add_ou_sub
+        self.__expressao_aritmetica_linha.termo = self.__termo
+
+        self.__termo.fator = self.__fator
+        self.__termo.termo_linha = self.__termo_linha
+
+        self.__termo_linha.mult_ou_div = self.__mult_ou_div
+        self.__termo_linha.fator = self.__fator
 
     def run(self):
         self.__sofware.parse(self.__consumer)

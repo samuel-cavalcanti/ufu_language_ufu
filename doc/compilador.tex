@@ -21,16 +21,15 @@ $\langle\text{conteudoBloco}\rangle \rightarrow \langle\text{listaVariaviaveis}\
 $\langle\text{listaVariaviaveis}\rangle \rightarrow \langle\text{declaracaoDeVariavel}\rangle \langle\text{listaVariaviaveis}\rangle | \epsilon $\\\\
 $\langle\text{listaComandos}\rangle \rightarrow \langle\text{comando}\rangle \langle\text{listaComandos}\rangle | \epsilon $\\\\
 $\langle\text{declaracaoDeVariavel}\rangle  \rightarrow \textbf{TipoDeVariavel} \textbf{:} \langle\text{listaIds}\rangle \textbf{;}$\\\\
-$\langle\text{comando}\rangle \rightarrow \langle\text{cmdSelecao}\rangle|\langle\text{cmdRepeticao}\rangle|\langle\text{cmdAtribuicao}\rangle$\\\\
+$\langle\text{comando}\rangle \rightarrow \langle\text{cmdSelecao}\rangle | \langle\text{cmdRepeticaoWhile}\rangle | \langle\text{cmdRepeticaoDoUntil}\rangle | \langle\text{cmdAtribuicao}\rangle$\\\\
 $\langle\text{listaIds}\rangle \rightarrow \textbf{id} \langle\text{maisDeUmID} \rangle$\\\\
 $\langle\text{maisDeUmID}\rangle \rightarrow \textbf{,}\langle\text{listaIds}\rangle  | \epsilon$\\\\
 $\langle\text{cmdSelecao}\rangle \rightarrow \textbf{if(} \langle\text{condicao}\rangle \textbf{)then} \langle\text{bloco}\rangle \langle \text{comElse} \rangle$\\\\
 $\langle \text{comElse} \rangle \rightarrow  \textbf{else} \langle\text{bloco}\rangle | \epsilon \\\\$
-$\langle\text{cmdRepeticao}\rangle \rightarrow \langle\text{cmdRepeticaoWhile}\rangle|\langle\text{cmdRepeticaoDoUntil}\rangle$\\\\
 $\langle\text{cmdRepeticaoWhile}\rangle \rightarrow \textbf{while(} \langle\text{condicao}\rangle \textbf{)} \langle\text{bloco}\rangle $\\\\
 $\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)} \textbf{;}$\\\\
 $\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressaoAritmeticaOuConstAscii}\rangle \textbf{;} $\\\\
-$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico}   \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
+$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico} \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
 $\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\text{condicao}\rangle | \epsilon $\\\\
 $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstInt } | \textbf{ ConstReal } | \textbf{ ConstAscii}$\\\\
 $\langle\text{expressaoAritmeticaOuConstAscii}\rangle \rightarrow \langle\text{expressaoAritmetica}\rangle | \textbf{ ConstAscii}$\\\\
@@ -294,8 +293,6 @@ $\langle\text{multOUdiv}\rangle \rightarrow  \textbf{mult } | \textbf{ div}$ \\\
         listaIds             & id                                  & ; \\
         \hline
         cmdSelecao           & if                                  & id, \}, if, while, do\\
-        \hline
-        cmdRepeticao         & while, do                           & id, \}, if, while, do \\
         \hline
         cmdAtribuicao        & id                                  & id, \}, if, while, do \\
         \hline

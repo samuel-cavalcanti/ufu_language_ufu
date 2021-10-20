@@ -119,10 +119,10 @@ class OneCharAdHocScannersTest(unittest.TestCase):
 
         source = TensorSourceProgram(line)
         expected_tokens = [
-            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 1), content='+'),
-            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 3), content='-'),
-            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 5), content='*'),
-            UfuToken(token_type=UfuTokenType.ARITHMETIC_OPERATOR, pos=(0, 7), content='/'),
+            UfuToken(token_type=UfuTokenType.ADD, pos=(0, 1), content='+'),
+            UfuToken(token_type=UfuTokenType.SUB, pos=(0, 3), content='-'),
+            UfuToken(token_type=UfuTokenType.MUL, pos=(0, 5), content='*'),
+            UfuToken(token_type=UfuTokenType.DIV, pos=(0, 7), content='/'),
         ]
         scanners = SingleCharTokenScanCreator().create_all_token_scans()
         ufu_scanner = UfuScanner(token_scanners=scanners, source=source)

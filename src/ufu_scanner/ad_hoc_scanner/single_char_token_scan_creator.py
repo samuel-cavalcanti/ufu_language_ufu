@@ -57,16 +57,16 @@ class SingleCharTokenScanCreator:
 
     @staticmethod
     def __create_add_arithmetic_operation_scan() -> TokenScan:
-        return OneCharAdHocScanner(char='+', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
+        return OneCharAdHocScanner(char='+', token_type=UfuTokenType.ADD)
 
     @staticmethod
     def __create_subtract_arithmetic_operation_scan() -> TokenScan:
-        return OneCharAdHocScanner(char='-', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
+        return OneCharAdHocScanner(char='-', token_type=UfuTokenType.SUB)
 
     @staticmethod
     def __create_multiplication_arithmetic_operation_scan() -> TokenScan:
-        return OneCharAdHocScanner(char='*', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
+        return OneCharAdHocScanner(char='*', token_type=UfuTokenType.MUL)
 
     @staticmethod
     def __create_divide_arithmetic_operation_scan() -> TokenScan:
-        return OneCharAdHocScanner(char='/', token_type=UfuTokenType.ARITHMETIC_OPERATOR)
+        return OneCharAdHocScanner(char='/', token_type=UfuTokenType.DIV)
