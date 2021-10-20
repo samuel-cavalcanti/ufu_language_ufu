@@ -1,19 +1,25 @@
+from typing import List
+
 from src.ufu_token import UfuToken, UfuTokenType
 from src.ufu_scanner import Scanner
 from src.ufu_parser.parser import UfuParserException
+from .syntax_tree import SyntaxTree, SyntaxNode
 
 
 class ScannerConsumer:
     __scanner: Scanner
     __current_token: UfuToken
+    syntax_tree: SyntaxTree
 
     def __init__(self, scanner: Scanner):
         self.__scanner = scanner
         self.__current_token = scanner.get_token()
+        self.__syntax_tree = SyntaxTree(SyntaxNode(name=''))
         print(f"current token {self.__current_token}")
 
     def eat(self, expected_type: UfuTokenType) -> bool:
         if expected_type == self.__current_token.type:
+            self.__syntax_tree.insert_node_in_parent(SyntaxNode(name=f"{expected_type.name}"))
             self.__current_token = self.__scanner.get_token()
             print(f"current token {self.__current_token}")
 

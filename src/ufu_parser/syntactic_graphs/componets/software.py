@@ -7,6 +7,7 @@ class Software:
     bloco: SyntacticGraph
 
     def parse(self, consumer: ScannerConsumer) -> bool:
+
         consumer.eat_or_exception(UfuTokenType.PROGRAMA)
         consumer.eat_or_exception(UfuTokenType.ID)
         self.bloco.parse(consumer)
