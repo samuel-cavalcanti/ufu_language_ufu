@@ -1,7 +1,10 @@
+from typing import Any, Optional
+
+
 class SyntaxNode:
     name: str
-    childs: list
+    children: list
 
     def __init__(self, name: str):
         self.name = name
-        self.childs = list()
+        self.children = list()

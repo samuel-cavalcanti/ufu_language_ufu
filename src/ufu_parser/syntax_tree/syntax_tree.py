@@ -10,9 +10,9 @@ class SyntaxTree:
         self.root = root
 
     def insert_new_parent(self, node: SyntaxNode):
-        self.parent.childs.append(node)
+        self.parent.children.append(node)
         self.parent = node
 
     def insert_node_in_parent(self, node: SyntaxNode):
-        self.parent.childs.append(node)
+        self.parent.children.append(node)
 
