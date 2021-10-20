@@ -73,6 +73,3 @@ class TensorSourceProgramTest(unittest.TestCase):
             with self.assertRaises(SourceProgramException):
                 source.back(pos)
 
-
-if __name__ == '__main__':
-    unittest.main()
