@@ -69,7 +69,3 @@ class FullTestCase(unittest.TestCase):
             except SourceProgramException as error:
                 """ esse erro deve ocorrer com o fim do arquivo """
                 print(error)
-
-
-if __name__ == '__main__':
-    unittest.main()

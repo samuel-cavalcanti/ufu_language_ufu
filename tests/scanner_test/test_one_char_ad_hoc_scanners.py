@@ -130,7 +130,3 @@ class OneCharAdHocScannersTest(unittest.TestCase):
         results_tokens = self.__run_scanner(scanner=ufu_scanner, it_limit=len(line[0]) + 10)
 
         self.assertEqual(results_tokens, expected_tokens)
-
-
-if __name__ == '__main__':
-    unittest.main()

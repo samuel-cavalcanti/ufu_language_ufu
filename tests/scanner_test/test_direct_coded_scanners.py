@@ -198,7 +198,3 @@ class DirectCodedScannersTest(unittest.TestCase):
                 """occurs when scanner is not capable to recognize the char"""
 
         return results_tokens
-
-
-if __name__ == '__main__':
-    unittest.main()

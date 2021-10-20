@@ -28,7 +28,3 @@ class SyntaxTreeCase(unittest.TestCase):
         tree.insert_node_in_parent(SyntaxNode('n5'))
 
         self.assertEqual(len(tree.parent.childs), 1)
-
-
-if __name__ == '__main__':
-    unittest.main()

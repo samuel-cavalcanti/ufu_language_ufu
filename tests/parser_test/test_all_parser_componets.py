@@ -43,9 +43,3 @@ class ParserTestCase(unittest.TestCase):
         mock_scanner.tokens[0] = UfuToken(token_type=UfuTokenType.PROGRAMA, pos=(1, 1))
         consumer = ScannerConsumer(mock_scanner)
         graph.parse(consumer)
-
-
-
-
-if __name__ == '__main__':
-    unittest.main()
