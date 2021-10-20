@@ -29,12 +29,18 @@ $\langle \text{comElse} \rangle \rightarrow  \textbf{else} \langle\text{bloco}\r
 $\langle\text{cmdRepeticao}\rangle \rightarrow \langle\text{cmdRepeticaoWhile}\rangle|\langle\text{cmdRepeticaoDoUntil}\rangle$\\\\
 $\langle\text{cmdRepeticaoWhile}\rangle \rightarrow \textbf{while(} \langle\text{condicao}\rangle \textbf{)} \langle\text{bloco}\rangle $\\\\
 $\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)} \textbf{;}$\\\\
-$\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressao}\rangle \textbf{;} $\\\\
+$\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressaoAritmeticaOuConstAscii}\rangle \textbf{;} $\\\\
 $\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico}   \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
 $\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\text{condicao}\rangle | \epsilon $\\\\
-$\langle\text{expressao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \langle\text{expressao'}\rangle$\\\\
-$\langle\text{expressao'}\rangle \rightarrow  \textbf{operadorAritimetico}\langle\text{expressao}\rangle| \epsilon $\\\\
 $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstInt } | \textbf{ ConstReal } | \textbf{ ConstAscii}$\\\\
+$\langle\text{expressaoAritmeticaOuConstAscii}\rangle \rightarrow \langle\text{expressaoAritmetica}\rangle | \textbf{ ConstAscii}$\\\\
+$\langle\text{expressaoAritmetica}\rangle \rightarrow  \langle\text{termo}\rangle \langle\text{expressaoAritmetica'}\rangle$\\\\
+$\langle\text{expressaoAritmetica'}\rangle \rightarrow \langle\text{addOUsub}\rangle \langle\text{termo}\rangle | \epsilon $\\\\
+$\langle\text{termo}\rangle \rightarrow \langle\text{fator}\rangle \langle\text{termo'}\rangle $\\\\
+$\langle\text{termo'}\rangle \rightarrow \langle\text{multOUdiv}\rangle \langle\text{fator}\rangle | \epsilon $\\\\
+$\langle\text{fator}\rangle \rightarrow \textbf{id }| \textbf{ ConstInt } | \textbf{ ConstReal } $\\\\
+$\langle\text{addOUsub}\rangle \rightarrow  \textbf{add } | \textbf{ sub}$ \\\\
+$\langle\text{multOUdiv}\rangle \rightarrow  \textbf{mult } | \textbf{ div}$ \\\\
 
 
 
@@ -108,13 +114,13 @@ $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstIn
          $>=$              &      OperadorLógico  &            Maior  ou igual           \\
         \hline
         \hline
-         $+$               &      OperadorAritmético  &            Soma                      \\
+         $+$               &      add             &            Soma                      \\
         \hline
-         $-$               &      OperadorAritmético  &            Subtração                 \\
+         $-$               &      sub             &            Subtração                 \\
         \hline
-         $*$               &      OperadorAritmético  &            Multiplicação             \\
+         $*$               &      mult            &            Multiplicação             \\
         \hline
-         $/$               &      OperadorAritmético  &            Divisão                   \\
+         $/$               &      div             &            Divisão                   \\
         \hline
         \hline
          $:=$              &      OperadorAtribuição  &            -                         \\
@@ -165,7 +171,13 @@ $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstIn
         \hline
         OperadorLógico & $<> | == | > | < | <= | >= $   \\
         \hline
-        OperadorAritmético & $ + | - | * | / |$   \\
+        add & $+$   \\
+        \hline
+        sub & $ - $   \\
+        \hline
+        mult & $ * $   \\
+        \hline
+        div & $ / $   \\
         \hline
         \hline
         OperadorAtribuição & := \\
@@ -201,37 +213,39 @@ $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstIn
 
 % FIRST[SOFTWARE] = programa
 % FIRST[BLOCO] = {
-% FIRST[CONTEUDOBLOCO] = id int real ascii if while do
-% FIRST[LISTAVARIAVEIS] = int real ascii
+% FIRST[CONTEUDOBLOCO] = id TipoDeVariavel if while do
+% FIRST[LISTAVARIAVEIS] = TipoDeVariavel
 % FIRST[LISTACOMANDOS] = id if while do
-% FIRST[DECLARACAODEVARIAVEL] = int real ascii
+% FIRST[DECLARACAODEVARIAVEL] = TipoDeVariavel
 % FIRST[COMANDO] = id if while do
-% FIRST[TIPO] = int real ascii
 % FIRST[LISTAIDS] = id
 % FIRST[COMANDOSELECAO] = if
 % FIRST[COMANDOREPETICAO] = while do
 % FIRST[COMANDOATRIBUICAO] = id
 % FIRST[maisDeUmID] = ,
-% FIRST[CONDICAO] = id
+% FIRST[CONDICAO] = id ConstAscii ConstInt ConstReal
 % FIRST[COMELSE] = else
 % FIRST[CMDREPETICAOWHILE] = while
 % FIRST[CMDREPETICAODOUNTIL] = do
-% FIRST[EXPRESSAO] = id ConstInt ConstReal ConstAscii
-% FIRST[operadorLogico] = == <> < > <= >=
-% FIRST[CONDICAO'] = == <> < > <= >=
-% FIRST[IDOUCONSTATE] = id ConstInt ConstReal ConstAscii
-% FIRST[EXPRESSAO'] = + - * /
-% FIRST[OPERADORARITIMETICO] = + - * /
-% FIRST[CONSTANTE] = ConstInt ConstReal ConstAscii
+% FIRST[EXPRESSAOARITMETICAOUCONSTASCII] = id ConstAscii ConstInt ConstReal
+% FIRST[IDOUCONSTATE] = id ConstAscii ConstInt ConstReal
+% FIRST[CONDICAO'] = operadorLogico
+% FIRST[EXPRESSAOARITMETICA] = id ConstInt ConstReal
+% FIRST[TERMO] = id ConstInt ConstReal
+% FIRST[EXPRESSAOARITMETICA'] = add sub
+% FIRST[ADDOUSUB] = add sub
+% FIRST[FATOR] = id ConstInt ConstReal
+% FIRST[TERMO'] = mult div
+% FIRST[MULTOUDIV] = mult div
+% FIRST[CONSTANTE] = ConstAscii ConstInt ConstReal
 
 % FOLLOW[SOFTWARE] =
 % FOLLOW[BLOCO] = id $ } if else while do until
 % FOLLOW[CONTEUDOBLOCO] = }
 % FOLLOW[LISTAVARIAVEIS] = id } if while do
 % FOLLOW[LISTACOMANDOS] = }
-% FOLLOW[DECLARACAODEVARIAVEL] = id } int real ascii if while do
+% FOLLOW[DECLARACAODEVARIAVEL] = id } TipoDeVariavel if while do
 % FOLLOW[COMANDO] = id } if while do
-% FOLLOW[TIPO] = :
 % FOLLOW[LISTAIDS] = ;
 % FOLLOW[COMANDOSELECAO] = id } if while do
 % FOLLOW[COMANDOREPETICAO] = id } if while do
@@ -241,13 +255,17 @@ $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstIn
 % FOLLOW[COMELSE] = id } if while do
 % FOLLOW[CMDREPETICAOWHILE] = id } if while do
 % FOLLOW[CMDREPETICAODOUNTIL] = id } if while do
-% FOLLOW[EXPRESSAO] = ;
-% FOLLOW[operadorLogico] = id
+% FOLLOW[EXPRESSAOARITMETICAOUCONSTASCII] = ;
+% FOLLOW[IDOUCONSTATE] = operadorLogico
 % FOLLOW[CONDICAO'] = )
-% FOLLOW[IDOUCONSTATE] = ; + - * /
-% FOLLOW[EXPRESSAO'] = ;
-% FOLLOW[OPERADORARITIMETICO] = id ConstInt ConstReal ConstAscii
-% FOLLOW[CONSTANTE] = ; + - * /
+% FOLLOW[EXPRESSAOARITMETICA] = ;
+% FOLLOW[TERMO] = ; add sub
+% FOLLOW[EXPRESSAOARITMETICA'] = ;
+% FOLLOW[ADDOUSUB] = id ConstInt ConstReal
+% FOLLOW[FATOR] = ; add sub mult div
+% FOLLOW[TERMO'] = ; add sub
+% FOLLOW[MULTOUDIV] = id ConstInt ConstReal
+% FOLLOW[CONSTANTE] = operadorLogico
 
 
 
@@ -293,9 +311,21 @@ $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstIn
         \hline
         cmdRepeticaoDoUntil  & do                                  & id, \}, if, while, do \\
         \hline
-        expressao            & id, ConstInt, ConstReal, ConstAscii & ; \\
+        expressaoAritmeticaOuConstAscii & id, ConstInt, ConstReal, ConstAscii & ; \\
         \hline
-        expressao'           & operadorAritimetico                 & ; \\
+        expressaoAritmetica  & id, ConstInt, ConstReal & ; \\
+        \hline
+        expressaoAritmetica' & add, sub                 & ; \\
+        \hline
+        addOUsub             & add, sub                 & id, ConstInt, ConstReal \\
+        \hline
+        termo                &  id, ConstInt, ConstReal & add, sub \\
+        \hline
+        termo'               & mult,div                 & add, sub \\
+        \hline
+        multOUdiv            & mult,div                 & id, ConstInt, ConstReal \\
+        \hline
+        fator           &  id, ConstInt, ConstReal                 & add, sub, mult, div \\
         \hline
         idOUConstante        & id, ConstInt, ConstReal, ConstAscii &  ; ,operadorAritimetico \\
         \hline
