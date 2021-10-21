@@ -34,9 +34,9 @@ $\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\tex
 $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstInt } | \textbf{ ConstReal } | \textbf{ ConstAscii}$\\\\
 $\langle\text{expressaoAritmeticaOuConstAscii}\rangle \rightarrow \langle\text{expressaoAritmetica}\rangle | \textbf{ ConstAscii}$\\\\
 $\langle\text{expressaoAritmetica}\rangle \rightarrow  \langle\text{termo}\rangle \langle\text{expressaoAritmetica'}\rangle$\\\\
-$\langle\text{expressaoAritmetica'}\rangle \rightarrow \langle\text{addOUsub}\rangle \langle\text{termo}\rangle | \epsilon $\\\\
+$\langle\text{expressaoAritmetica'}\rangle \rightarrow \langle\text{addOUsub}\rangle \langle\text{termo}\rangle \langle\text{expressaoAritmetica'}\rangle | \epsilon $\\\\
 $\langle\text{termo}\rangle \rightarrow \langle\text{fator}\rangle \langle\text{termo'}\rangle $\\\\
-$\langle\text{termo'}\rangle \rightarrow \langle\text{multOUdiv}\rangle \langle\text{fator}\rangle | \epsilon $\\\\
+$\langle\text{termo'}\rangle \rightarrow \langle\text{multOUdiv}\rangle \langle\text{fator}\rangle \langle\text{termo'}\rangle | \epsilon $\\\\
 $\langle\text{fator}\rangle \rightarrow \textbf{id }| \textbf{ ConstInt } | \textbf{ ConstReal } $\\\\
 $\langle\text{addOUsub}\rangle \rightarrow  \textbf{add } | \textbf{ sub}$ \\\\
 $\langle\text{multOUdiv}\rangle \rightarrow  \textbf{mult } | \textbf{ div}$ \\\\

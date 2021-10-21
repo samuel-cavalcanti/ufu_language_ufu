@@ -1,0 +1,23 @@
+ [este e o meu primeiro programa ufu]
+programa meuPrograma {
+    int:numeroInteiro;[este he meu numero inteiro]
+    ascii:letra;[essa he uma letra]
+    real: digito; [esse é um digito]
+    letra := '5';
+
+
+    while ( letra <> '4' ){
+
+        letra := '4';
+    }
+
+    if ( 5.3 >= 4.2) then{
+
+    }
+    else{
+        digito := 15.1 - 1.0/2.0 + 3.0;
+    }
+
+    numeroInteiro := 5;
+
+}

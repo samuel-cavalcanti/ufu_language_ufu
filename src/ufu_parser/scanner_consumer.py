@@ -40,7 +40,7 @@ class ScannerConsumer:
 
         message = f'Expected {expected_type.name} ' \
                   f'Token on row {row} and column {col},' \
-                  f'find {self.__current_token.content} '
+                  f'find {self.__current_token} '
 
         raise UfuParserException(message)
 

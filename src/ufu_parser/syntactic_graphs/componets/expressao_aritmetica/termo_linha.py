@@ -17,9 +17,13 @@ class TermoLinha:
             return None
 
         fator = self.fator.parse(consumer)
+        termo_linha = self.parse(consumer)
 
         node = SyntaxNode(self.__class__.__name__)
         node.children.append(mult_ou_div)
         node.children.append(fator)
+
+        if termo_linha:
+            node.children.append(termo_linha)
 
         return node
