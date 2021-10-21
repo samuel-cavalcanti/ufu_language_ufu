@@ -11,7 +11,7 @@ programa meuPrograma {
         letra := '4';
     }
 
-    if ( 5.3 >= 4.2) then{
+    if ( 5.3 >= 4.2 ) then{
 
     }
     else{

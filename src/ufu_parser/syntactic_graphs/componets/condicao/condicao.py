@@ -14,13 +14,10 @@ class Condicao:
         const = self.id_ou_constante.parse(consumer)
         consumer.eat_or_exception(UfuTokenType.RELATIONAL_OPERATOR)
         const_2 = self.id_ou_constante.parse(consumer)
-        condicao_linha = self.condicao_linha.parse(consumer)
 
         node = SyntaxNode(self.__class__.__name__)
         node.children.append(const)
         node.children.append(SyntaxNode(UfuTokenType.RELATIONAL_OPERATOR.name))
         node.children.append(const_2)
-        if condicao_linha:
-            node.children.append(condicao_linha)
 
         return node

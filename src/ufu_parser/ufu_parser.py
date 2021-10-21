@@ -38,7 +38,6 @@ class UfuParser:
         self.__id_ou_constante = IdOuConstante()
 
         self.__condicao = Condicao()
-        self.__condicao_linha = CondicaoLinha()
 
         self.__expressao_aritmetica_ou_const_ascii = ExpressaoAritmeticaOuConstAscii()
 
@@ -89,9 +88,6 @@ class UfuParser:
         self.__cmd_repeticao_do_until.condicao = self.__condicao
 
         self.__condicao.id_ou_constante = self.__id_ou_constante
-        self.__condicao.condicao_linha = self.__condicao_linha
-
-        self.__condicao_linha.condicao = self.__condicao
 
         self.__cmd_atribuicao.expressao_aritmetica_ou_const_ascii = self.__expressao_aritmetica_ou_const_ascii
 

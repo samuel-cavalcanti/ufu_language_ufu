@@ -29,8 +29,8 @@ $\langle \text{comElse} \rangle \rightarrow  \textbf{else} \langle\text{bloco}\r
 $\langle\text{cmdRepeticaoWhile}\rangle \rightarrow \textbf{while(} \langle\text{condicao}\rangle \textbf{)} \langle\text{bloco}\rangle $\\\\
 $\langle\text{cmdRepeticaoDoUntil}\rangle \rightarrow \textbf{do} \langle\text{bloco}\rangle \textbf{until(} \langle\text{condicao}\rangle \textbf{)} \textbf{;}$\\\\
 $\langle\text{cmdAtribuicao}\rangle \rightarrow  \textbf{id} \textbf{:=} \langle\text{expressaoAritmeticaOuConstAscii}\rangle \textbf{;} $\\\\
-$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico} \langle\text{idOUConstante}\rangle \langle\text{condicao'}\rangle $\\\\
-$\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\text{condicao}\rangle | \epsilon $\\\\
+$\langle\text{condicao}\rangle \rightarrow  \langle\text{idOUConstante}\rangle \textbf{operadorLogico} \langle\text{idOUConstante}\rangle $\\\\%\langle\text{condicao'}\rangle 
+% $\langle\text{condicao'}\rangle \rightarrow  \textbf{operadorLogico} \langle\text{condicao}\rangle | \epsilon $\\\\
 $\langle\text{idOUConstante}\rangle \rightarrow  \textbf{id }|  \textbf{ ConstInt } | \textbf{ ConstReal } | \textbf{ ConstAscii}$\\\\
 $\langle\text{expressaoAritmeticaOuConstAscii}\rangle \rightarrow \langle\text{expressaoAritmetica}\rangle | \textbf{ ConstAscii}$\\\\
 $\langle\text{expressaoAritmetica}\rangle \rightarrow  \langle\text{termo}\rangle \langle\text{expressaoAritmetica'}\rangle$\\\\
