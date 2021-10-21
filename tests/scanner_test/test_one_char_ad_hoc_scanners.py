@@ -3,7 +3,7 @@ import unittest
 from src.source_program.tensor_source_program import TensorSourceProgram, SourceProgramException
 from src.ufu_token.ufu_token import UfuToken, UfuTokenType
 from src.ufu_scanner.ad_hoc_scanner.one_char_ad_hoc_scanner import OneCharAdHocScanner, OneCharScannerException
-from src.ufu_scanner.ufu_scanner import UfuScanner, ScannerException
+from src.ufu_scanner import UfuScanner, ScannerException
 from src.ufu_scanner.ad_hoc_scanner.single_char_token_scan_creator import SingleCharTokenScanCreator
 
 

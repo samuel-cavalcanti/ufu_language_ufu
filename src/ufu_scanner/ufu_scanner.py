@@ -1,12 +1,9 @@
 from src.source_program import SourceProgram
 from src.ufu_scanner.token_scan import TokenScan
+from src.ufu_scanner.scanner import ScannerException
 from src.ufu_token import UfuToken
-
+from src.ufu_scanner.direct_coded_scanner import CommentariesAndSpaces
 from typing import List
-
-
-class ScannerException(Exception):
-    pass
 
 
 class UfuScanner:
@@ -26,7 +23,7 @@ class UfuScanner:
         else:
             self.__first_iteration = False
 
-        self.__remove_commentaries_and_spaces()
+        self.__token_scanners: List[TokenScan] = [CommentariesAndSpaces()] + self.__token_scanners
 
         for scanner in self.__token_scanners:
             token = scanner.scan(self.__source)
@@ -36,22 +33,3 @@ class UfuScanner:
         row, col = self.__source.current_pos()
         raise ScannerException(
             f'unrecognized token, in row: {row + 1}, column: {col + 1} char: {self.__source.current_char().encode()} ')
-
-    def __remove_commentaries_and_spaces(self):
-
-        state = 0
-
-        while True:
-
-            if state == 0:
-                if self.__source.current_char().isspace():
-                    self.__source.next_char()
-                elif self.__source.current_char() == '[':
-                    state = 1
-                else:
-                    break
-
-            elif state == 1:
-                if self.__source.current_char() == ']':
-                    state = 0
-                self.__source.next_char()

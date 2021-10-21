@@ -2,6 +2,8 @@ from typing import Protocol
 
 from src.ufu_token import UfuToken
 
+class ScannerException(Exception):
+    pass
 
 class Scanner(Protocol):
 

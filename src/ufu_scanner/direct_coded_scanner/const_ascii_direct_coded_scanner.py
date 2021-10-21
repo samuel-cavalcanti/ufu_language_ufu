@@ -3,7 +3,7 @@ from enum import Enum, auto
 
 from src.source_program import SourceProgram
 from src.ufu_token import UfuToken, UfuTokenType
-from src.ufu_scanner.ufu_scanner import ScannerException
+from src.ufu_scanner.scanner import ScannerException
 
 
 class State(Enum):

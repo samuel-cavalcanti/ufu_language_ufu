@@ -1,2 +1,2 @@
-from .ufu_scanner import UfuScanner, ScannerException
-from .scanner import Scanner
+from .ufu_scanner import UfuScanner
+from .scanner import Scanner, ScannerException
