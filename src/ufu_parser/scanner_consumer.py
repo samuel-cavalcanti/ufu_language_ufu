@@ -20,12 +20,7 @@ class ScannerConsumer:
 
     def eat(self, expected_type: UfuTokenType) -> bool:
         if expected_type == self.__current_token.type:
-
-            try:
-                self.__current_token = self.__scanner.get_token()
-                print(f"current token {self.__current_token}")
-            except SourceProgramException:
-                pass
+            self.__current_token = self.__scanner.get_token()
 
             return True
 

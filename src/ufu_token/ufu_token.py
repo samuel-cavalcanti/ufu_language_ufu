@@ -41,6 +41,8 @@ class UfuTokenType(Enum):
     CONST_REAL = auto()
     CONST_ASCII = auto()
 
+    END_FILE = auto()
+
 
 @dataclass()
 class UfuToken:
