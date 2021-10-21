@@ -6,3 +6,5 @@ build/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+
+tests/assets/dot_files/*

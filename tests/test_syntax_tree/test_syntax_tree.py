@@ -37,5 +37,5 @@ class SyntaxTreeCase(unittest.TestCase):
 
         content_file = visualizer.generate_graphviz_file(tree.root)
 
-        with open('tests/test_syntax_tree/tree.dot', 'w') as file:
+        with open('tests/assets/dot_files/tree.dot', 'w') as file:
             file.write(content_file)
