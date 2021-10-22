@@ -5,3 +5,4 @@ from dataclasses import dataclass
 class Symbol:
     type: str
     name: str
+    value: str

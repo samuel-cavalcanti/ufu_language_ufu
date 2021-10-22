@@ -27,5 +27,8 @@ class UFUSymbolTable:
 
         return None
 
-    def new_table(self) -> None:
+    def create_table(self) -> None:
         self.__tables.append({})
+
+    def drop_table(self) -> None:
+        self.__tables.pop(-1)
