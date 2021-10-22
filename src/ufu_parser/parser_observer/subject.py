@@ -15,5 +15,8 @@ class Subject(Protocol):
     def detach(self, graph: type, callback: Callable[[SyntaxNode], None]) -> None:
         ...
 
-    def notify(self, graph: type, node: SyntaxNode) -> None:
+    def on_next(self, graph: type, node: SyntaxNode) -> None:
+        ...
+
+    def on_complete(self, graph: type, node: SyntaxNode) -> None:
         ...
