@@ -10,7 +10,7 @@ class MaisDeUmID:
     lista_ids: SyntacticGraph
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
-        if consumer.eat(UfuTokenType.COMMA) is False:
+        if not consumer.eat(UfuTokenType.COMMA):
             return None
 
         child = self.lista_ids.parse(consumer)

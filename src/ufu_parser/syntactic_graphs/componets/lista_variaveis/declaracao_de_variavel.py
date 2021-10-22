@@ -10,7 +10,8 @@ class DeclaracaoDeVariavel:
     lista_ids: SyntacticGraph
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
-        if consumer.eat(UfuTokenType.TYPE_VARIABLE) is False:
+        type_variable = consumer.eat(UfuTokenType.TYPE_VARIABLE)
+        if not type_variable:
             return None
 
         consumer.eat_or_exception(UfuTokenType.COLON)

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from src.source_program import SourceProgramException
 from src.ufu_token import UfuToken, UfuTokenType
@@ -18,17 +18,19 @@ class ScannerConsumer:
 
         print(f"current token {self.__current_token}")
 
-    def eat(self, expected_type: UfuTokenType) -> bool:
+    def eat(self, expected_type: UfuTokenType) -> Optional[UfuToken]:
         if expected_type == self.__current_token.type:
+            token = self.__current_token
             self.__current_token = self.__scanner.get_token()
 
-            return True
+            return token
 
-        return False
+        return None
 
-    def eat_or_exception(self, expected_type: UfuTokenType):
-        if self.eat(expected_type):
-            return
+    def eat_or_exception(self, expected_type: UfuTokenType) -> UfuToken:
+        token = self.eat(expected_type)
+        if token:
+            return token
 
         row = self.__current_token.file_pos[0] + 1
         col = self.__current_token.file_pos[1] + 1
