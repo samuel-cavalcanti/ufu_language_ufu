@@ -16,11 +16,20 @@ from src.ufu_scanner.direct_coded_scanner.const_number_direct_coded_scanner impo
 class DirectCodedScannersTest(unittest.TestCase):
     def test_assignment_operator_scanner(self):
         lines = ['a:int;', 'a := 2']
+        assert 'a' == lines[0][0]
         assert ':' == lines[0][1]
+        assert 'i' == lines[0][2]
+        assert 'a' == lines[1][0]
         assert ':' == lines[1][2]
-        expected_tokens = [UfuToken(token_type=UfuTokenType.COLON, pos=(0, 1)),
-                           UfuToken(token_type=UfuTokenType.ASSIGNMENT_OPERATOR, pos=(1, 2))]
-        scanners = [AssignmentOperatorWithColonInDirectCodedScanner()]
+
+        expected_tokens = [
+            UfuToken(token_type=UfuTokenType.ID, pos=(0, 0), content='a'),
+            UfuToken(token_type=UfuTokenType.COLON, pos=(0, 1)),
+            UfuToken(token_type=UfuTokenType.TYPE_VARIABLE, pos=(0, 2), content='int'),
+            UfuToken(token_type=UfuTokenType.ID, pos=(1, 0), content='a'),
+            UfuToken(token_type=UfuTokenType.ASSIGNMENT_OPERATOR, pos=(1, 2))
+        ]
+        scanners = [AssignmentOperatorWithColonInDirectCodedScanner(), LettersWithDigitsDirectCodedScanner()]
 
         source = TensorSourceProgram(lines)
 

@@ -15,6 +15,7 @@ class AssignmentOperatorWithColonInDirectCodedScanner:
     def scan(self, source: SourceProgram) -> Optional[UfuToken]:
         state = State.initial_state
         initial_pos = source.current_pos()
+        back_pos = source.current_pos()
         for _ in range(5):
             char = source.current_char()
             if state == State.initial_state:
@@ -26,5 +27,7 @@ class AssignmentOperatorWithColonInDirectCodedScanner:
                 if char == '=':
                     return UfuToken(token_type=UfuTokenType.ASSIGNMENT_OPERATOR, pos=initial_pos)
                 else:
+                    source.back(back_pos)
                     return UfuToken(token_type=UfuTokenType.COLON, pos=initial_pos)
+            back_pos = source.current_pos()
             source.next_char()
