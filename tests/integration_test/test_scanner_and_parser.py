@@ -11,7 +11,8 @@ from src.ufu_scanner.direct_coded_scanner import ConstNumberDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import ConstAsciiDirectCodedScanner
 from src.ufu_scanner.direct_coded_scanner import AssignmentOperatorWithColonInDirectCodedScanner
 from src.ufu_parser import UfuParser, UfuParserException
-from src.ufu_parser.syntax_tree import SyntaxTreeGraphvizVisualizer, SyntaxNode
+from src.ufu_parser.syntax_tree import SyntaxNode
+from src.tree_graphviz_visualizer import TreeGraphvizVisualizer
 import os
 import pathlib
 
@@ -26,7 +27,7 @@ class FullTestCase(unittest.TestCase):
     @staticmethod
     def __generate_graphviz_file(root: SyntaxNode, output_file_path: pathlib.Path):
         with open(output_file_path, 'w') as file:
-            content_file = SyntaxTreeGraphvizVisualizer().generate_graphviz_file(root)
+            content_file = TreeGraphvizVisualizer().generate_graphviz_file(root)
             file.write(content_file)
 
     @staticmethod

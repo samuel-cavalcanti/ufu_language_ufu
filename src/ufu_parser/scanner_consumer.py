@@ -1,10 +1,9 @@
-from typing import List, Optional
+from typing import Optional
 
-from src.source_program import SourceProgramException
 from src.ufu_token import UfuToken, UfuTokenType
 from src.ufu_scanner import Scanner
 from src.ufu_parser.parser import UfuParserException
-from .syntax_tree import SyntaxTree, SyntaxNode
+from .syntax_tree import SyntaxNode
 from src.ufu_parser.parser_observer import Subject
 
 

@@ -1,6 +1,8 @@
 import unittest
 
-from src.ufu_parser.syntax_tree import SyntaxTree, SyntaxNode, SyntaxTreeGraphvizVisualizer
+from src.ufu_parser.syntax_tree import SyntaxTree, SyntaxNode
+
+from src.tree_graphviz_visualizer import TreeGraphvizVisualizer
 
 
 class SyntaxTreeCase(unittest.TestCase):
@@ -33,7 +35,7 @@ class SyntaxTreeCase(unittest.TestCase):
         tree.insert_new_parent(SyntaxNode('n6'))
         tree.insert_node_in_parent(SyntaxNode('n8'))
 
-        visualizer = SyntaxTreeGraphvizVisualizer()
+        visualizer = TreeGraphvizVisualizer()
 
         content_file = visualizer.generate_graphviz_file(tree.root)
 
