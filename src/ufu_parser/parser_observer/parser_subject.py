@@ -1,48 +1,48 @@
-from typing import List, Optional, Any, Dict, Callable
+from typing import List, Optional, Any, Dict, Callable, NewType
 from .subject import SubjectException
 from src.ufu_parser.syntactic_graphs import componets as graph_components
 from src.ufu_parser.syntax_tree import SyntaxNode
 from src.ufu_parser.syntactic_graphs.componets import *
 import inspect
 
+from .observer import Observer
+
 
 class ParserSubject:
-    __listeners: Dict[type, List[Callable[[SyntaxNode], None]]]
+    __observers: Dict[type, List[Observer]]
 
     def __init__(self):
-        self.__listeners = {}
+        self.__observers = {}
+
         for name, obj in inspect.getmembers(graph_components):
             if inspect.isclass(obj):
-                self.__listeners[obj] = []
-        # self.__listeners = {
-        #     Bloco: [],
-        #     DeclaracaoDeVariavel: [],
-        #     CmdAtribuicao: [],
-        #     IdOuConstante: [],
-        #     Fator: [],
-        # }
+                self.__observers[obj] = []
 
-    def attach(self, graph: type, callback: Callable[[SyntaxNode], None]) -> None:
+    def attach(self, graph: type, observer: Observer) -> None:
         observers = self.__observers_or_exception(graph)
+        observers.append(observer)
 
-        observers.append(callback)
-
-    def detach(self, graph: type, callback: Callable[[SyntaxNode], None]) -> None:
+    def detach(self, graph: type, observer: Observer) -> None:
         observers = self.__observers_or_exception(graph)
+        observers.remove(observer)
 
-        observers.remove(callback)
+    def on_create(self, graph: type, node: SyntaxNode) -> None:
+        for observer in self.__observers_or_exception(graph):
+            observer.on_create(node)
 
     def on_next(self, graph: type, node: SyntaxNode) -> None:
         for observer in self.__observers_or_exception(graph):
-            observer(node)
+            observer.on_next(node)
 
     def on_complete(self, graph: type, node: SyntaxNode) -> None:
-        self.on_next(graph, node)
+        for observer in self.__observers_or_exception(graph):
+            observer.on_complete(node)
 
-    def __observers_or_exception(self, graph: type) -> List[Callable[[SyntaxNode], None]]:
-        callbacks = self.__listeners.get(graph, None)
+    def __observers_or_exception(self, graph: type, ) -> List[Observer]:
 
-        if callbacks is None:
+        observers = self.__observers.get(graph, None)
+
+        if observers is None:
             raise SubjectException(f"Observers Not Found for {graph}")
 
-        return callbacks
+        return observers

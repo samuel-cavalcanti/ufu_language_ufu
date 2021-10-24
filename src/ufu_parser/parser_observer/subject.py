@@ -1,6 +1,7 @@
 from typing import Protocol, Callable
 
 from src.ufu_parser.syntax_tree import SyntaxNode
+from .observer import Observer
 
 
 class SubjectException(Exception):
@@ -9,10 +10,13 @@ class SubjectException(Exception):
 
 class Subject(Protocol):
 
-    def attach(self, graph: type, callback: Callable[[SyntaxNode], None]) -> None:
+    def attach(self, graph: type, observer: Observer) -> None:
         ...
 
-    def detach(self, graph: type, callback: Callable[[SyntaxNode], None]) -> None:
+    def detach(self, graph: type,  observer: Observer) -> None:
+        ...
+
+    def on_create(self, graph: type, node: SyntaxNode) -> None:
         ...
 
     def on_next(self, graph: type, node: SyntaxNode) -> None:
