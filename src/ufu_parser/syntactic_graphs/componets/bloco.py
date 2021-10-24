@@ -10,15 +10,18 @@ class Bloco:
     conteudo_bloco: SyntacticGraph
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
+        node = SyntaxNode(self.__class__.__name__)
+        consumer.parser_subject.on_create(type(self), node)
+
         consumer.eat_or_exception(UfuTokenType.OPEN_BRACKETS)
         content_block_node = self.conteudo_bloco.parse(consumer)
         consumer.eat_or_exception(UfuTokenType.CLOSE_BRACKETS)
 
-        node = SyntaxNode(self.__class__.__name__)
         node.children.append(SyntaxNode(UfuTokenType.OPEN_BRACKETS.name))
         if content_block_node:
             node.children.append(content_block_node)
 
         node.children.append(SyntaxNode(UfuTokenType.CLOSE_PARENTHESES.name))
 
+        consumer.parser_subject.on_complete(type(self), node)
         return node

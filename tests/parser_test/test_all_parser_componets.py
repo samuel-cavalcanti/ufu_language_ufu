@@ -30,7 +30,7 @@ class ParserTestCase(unittest.TestCase):
     def test_software_graph(self):
         graph = Software()
         mock_scanner = MockScanner()
-        consumer = ScannerConsumer(mock_scanner)
+        consumer = ScannerConsumer(mock_scanner, Mock())
 
         mock_bloco = Mock()
         mock_bloco.parse = MagicMock(return_value=True)
@@ -41,5 +41,5 @@ class ParserTestCase(unittest.TestCase):
 
         mock_scanner.current_token = 0
         mock_scanner.tokens[0] = UfuToken(token_type=UfuTokenType.PROGRAMA, pos=(1, 1))
-        consumer = ScannerConsumer(mock_scanner)
+        consumer = ScannerConsumer(mock_scanner, Mock())
         graph.parse(consumer)

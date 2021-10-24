@@ -9,15 +9,11 @@ from src.ufu_parser.syntax_tree import SyntaxNode
 class MultOuDiv:
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
+        expected_token_types = [UfuTokenType.MUL, UfuTokenType.DIV]
 
-        node = SyntaxNode(self.__class__.__name__)
-
-        if consumer.eat(UfuTokenType.MUL):
-            node.children.append(SyntaxNode(UfuTokenType.MUL.name))
-            return node
-
-        if consumer.eat(UfuTokenType.DIV):
-            node.children.append(SyntaxNode(UfuTokenType.DIV.name))
-            return node
+        for token_type in expected_token_types:
+            token = consumer.eat(token_type)
+            if token:
+                return SyntaxNode.from_ufu_token(token)
 
         return None

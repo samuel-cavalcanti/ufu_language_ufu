@@ -10,14 +10,9 @@ class AddOuSUb:
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
 
-        node = SyntaxNode(self.__class__.__name__)
-
-        if consumer.eat(UfuTokenType.ADD):
-            node.children.append(SyntaxNode(UfuTokenType.ADD.name))
-            return node
-
-        if consumer.eat(UfuTokenType.SUB):
-            node.children.append(SyntaxNode(UfuTokenType.SUB.name))
-            return node
+        for token_type in [UfuTokenType.ADD, UfuTokenType.SUB]:
+            token = consumer.eat(token_type)
+            if token:
+                return SyntaxNode.from_ufu_token(token)
 
         return None

@@ -1,18 +1,30 @@
+from typing import Callable
+
 from src.ufu_scanner.scanner import Scanner
 from src.ufu_parser.syntactic_graphs.componets import *
 from src.ufu_parser.scanner_consumer import ScannerConsumer
 from src.ufu_parser.syntax_tree import SyntaxNode, SyntaxTree
-from src.source_program import SourceProgramException
+from src.ufu_parser.parser_observer import Subject, ParserSubject
 
 
 class UfuParser:
     __consumer: ScannerConsumer
     __scanner: Scanner
+    __subject: Subject
 
     def __init__(self, scanner: Scanner):
         self.__scanner = scanner
         self.__init_graphs()
         self.__connect_graphs()
+
+    def run(self) -> SyntaxTree:
+        self.__consumer = ScannerConsumer(self.__scanner, ParserSubject())
+        root = self.__sofware.parse(self.__consumer)
+
+        return SyntaxTree(root)
+
+    def register_observer(self, graph: type, callback: Callable[[SyntaxNode], None]):
+        pass
 
     def __init_graphs(self):
         self.__sofware = Software()
@@ -105,8 +117,4 @@ class UfuParser:
         self.__termo_linha.mult_ou_div = self.__mult_ou_div
         self.__termo_linha.fator = self.__fator
 
-    def run(self) -> SyntaxTree:
-        self.__consumer = ScannerConsumer(self.__scanner)
-        root = self.__sofware.parse(self.__consumer)
-
-        return SyntaxTree(root)
+        self.__fator.expressao_aritmetica = self.__expressao_aritmetica

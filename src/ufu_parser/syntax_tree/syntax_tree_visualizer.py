@@ -1,6 +1,6 @@
 import textwrap
 from .syntax_node import SyntaxNode
-
+import json
 
 class SyntaxTreeGraphvizVisualizer(object):
     def __init__(self):
@@ -15,7 +15,8 @@ class SyntaxTreeGraphvizVisualizer(object):
         self.dot_footer = ['}']
 
     def __append_node_on_body(self, node: SyntaxNode):
-        self.dot_body.append(f'node{id(node)} [label="{node.name}"]\n')
+
+        self.dot_body.append(f'node{id(node)} [label="{node.name}\n {node.information}"]\n')
 
     def __append_node_connection_on_body(self, origin: SyntaxNode, target: SyntaxNode):
         self.dot_body.append(f'  node{id(origin)} -> node{id(target)}\n')

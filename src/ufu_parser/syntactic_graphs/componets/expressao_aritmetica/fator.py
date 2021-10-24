@@ -12,14 +12,18 @@ class Fator:
 
         node = SyntaxNode(self.__class__.__name__)
 
-        if consumer.eat(UfuTokenType.ID):
-            node.children.append(SyntaxNode(UfuTokenType.ID.name))
-            return node
+        expected_tokens_type = [UfuTokenType.ID, UfuTokenType.CONST_INT, UfuTokenType.CONST_REAL]
 
-        if consumer.eat(UfuTokenType.CONST_INT):
-            node.children.append(SyntaxNode(UfuTokenType.CONST_INT.name))
-            return node
+        for token_type in expected_tokens_type:
+            token = consumer.eat(token_type)
+            if token:
+                # node.children.append(SyntaxNode.from_ufu_token(token))
+                return SyntaxNode.from_ufu_token(token)
 
-        consumer.eat_or_exception(UfuTokenType.CONST_REAL)
-        node.children.append(SyntaxNode(UfuTokenType.CONST_REAL.name))
-        return node
+        consumer.eat_or_exception(UfuTokenType.OPEN_PARENTHESES)
+
+        expressao = self.expressao_aritmetica.parse(consumer)
+
+        consumer.eat_or_exception(UfuTokenType.CLOSE_PARENTHESES)
+
+        return expressao

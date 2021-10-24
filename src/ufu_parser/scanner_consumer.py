@@ -5,16 +5,19 @@ from src.ufu_token import UfuToken, UfuTokenType
 from src.ufu_scanner import Scanner
 from src.ufu_parser.parser import UfuParserException
 from .syntax_tree import SyntaxTree, SyntaxNode
+from src.ufu_parser.parser_observer import Subject
 
 
 class ScannerConsumer:
     __scanner: Scanner
     __current_token: UfuToken
     parent: SyntaxNode
+    parser_subject: Subject
 
-    def __init__(self, scanner: Scanner):
+    def __init__(self, scanner: Scanner, subject: Subject):
         self.__scanner = scanner
         self.__current_token = scanner.get_token()
+        self.parser_subject = subject
 
         print(f"current token {self.__current_token}")
 

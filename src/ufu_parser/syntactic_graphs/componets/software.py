@@ -8,7 +8,6 @@ from src.ufu_parser.syntax_tree import SyntaxNode, SyntaxTree
 
 class Software:
     bloco: SyntacticGraph
-    __node: SyntaxNode
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
         consumer.eat_or_exception(UfuTokenType.PROGRAMA)

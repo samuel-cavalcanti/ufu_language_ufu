@@ -14,10 +14,8 @@ class Termo:
         fator = self.fator.parse(consumer)
         termo_linha = self.termo_linha.parse(consumer)
 
-        node = SyntaxNode(self.__class__.__name__)
-
-        node.children.append(fator)
         if termo_linha:
-            node.children.append(termo_linha)
+            termo_linha.children.insert(0, fator)
+            return termo_linha
 
-        return node
+        return fator

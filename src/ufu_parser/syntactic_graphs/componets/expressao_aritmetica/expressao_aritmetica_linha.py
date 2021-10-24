@@ -17,13 +17,13 @@ class ExpressaoAritmeticaLinha:
             return None
 
         termo = self.termo.parse(consumer)
-
         expressao_linha = self.parse(consumer)
 
-        node = SyntaxNode(self.__class__.__name__)
-        node.children.append(add_ou_sub)
-        node.children.append(termo)
         if expressao_linha:
-            node.children.append(expressao_linha)
+            expressao_linha.children.append(termo)
+            add_ou_sub.children.append(expressao_linha)
 
-        return node
+        else:
+            add_ou_sub.children.append(termo)
+
+        return add_ou_sub

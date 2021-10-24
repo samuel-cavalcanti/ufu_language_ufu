@@ -14,9 +14,11 @@ class ExpressaoAritmetica:
         termo = self.termo.parse(consumer)
         expressao_linha = self.expressao_aritmetica_linha.parse(consumer)
 
-        node = SyntaxNode(self.__class__.__name__)
-        node.children.append(termo)
         if expressao_linha:
-            node.children.append(expressao_linha)
+            if termo.name in [UfuTokenType.DIV.name, UfuTokenType.MUL.name]:
+                expressao_linha.children.insert(0, termo)
+            else:
+                expressao_linha.children.append(termo)
+            return expressao_linha
 
-        return node
+        return termo

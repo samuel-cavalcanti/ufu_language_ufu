@@ -15,6 +15,6 @@ class MaisDeUmID:
 
         child = self.lista_ids.parse(consumer)
         node = SyntaxNode(self.__class__.__name__)
-        node.children.append(SyntaxNode(UfuTokenType.COMMA.name))
-        node.children.append(child)
+        # node.children.append(SyntaxNode(UfuTokenType.COMMA.name))
+        node.children += child.children
         return node
