@@ -13,6 +13,7 @@ from src.ufu_scanner.direct_coded_scanner import AssignmentOperatorWithColonInDi
 from src.ufu_parser import UfuParser, UfuParserException
 from src.ufu_parser.syntax_tree import SyntaxTreeGraphvizVisualizer, SyntaxNode
 import os
+import pathlib
 
 
 class FullTestCase(unittest.TestCase):
@@ -23,8 +24,8 @@ class FullTestCase(unittest.TestCase):
             return ufu_file.readlines()
 
     @staticmethod
-    def __generate_graphviz_file(root: SyntaxNode, output_file: str):
-        with open(output_file, 'w') as file:
+    def __generate_graphviz_file(root: SyntaxNode, output_file_path: pathlib.Path):
+        with open(output_file_path, 'w') as file:
             content_file = SyntaxTreeGraphvizVisualizer().generate_graphviz_file(root)
             file.write(content_file)
 
@@ -71,4 +72,14 @@ class FullTestCase(unittest.TestCase):
             parser = UfuParser(scanner)
 
             tree = parser.run()
-            self.__generate_graphviz_file(tree.root, f'tests/assets/dot_files/correct_sources_{correct_file}.dot')
+            path_dir = pathlib.Path('tests', 'assets', 'dot_files')
+            self.__create_dir_if_not_exist(path_dir)
+            self.__generate_graphviz_file(tree.root, path_dir.joinpath(f'correct_sources_{correct_file}.dot'))
+
+    @staticmethod
+    def __create_dir_if_not_exist(path: pathlib.Path):
+
+        if path.is_dir():
+            return
+
+        path.mkdir()
