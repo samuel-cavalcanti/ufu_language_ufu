@@ -14,9 +14,3 @@ class SymbolTable(Protocol):
 
     def get(self, variable_id: str) -> Optional[Symbol]:
         ...
-
-    def create_table(self) -> None:
-        ...
-
-    def drop_table(self) -> None:
-        ...
