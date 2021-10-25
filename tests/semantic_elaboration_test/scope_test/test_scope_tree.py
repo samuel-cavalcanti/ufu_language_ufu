@@ -1,6 +1,7 @@
 import pathlib
 import unittest
-from unittest.mock import Mock, MagicMock
+from unittest.mock import Mock
+
 from src.semantic_elaboration.scope_tree import ScopeTree, ScopeNode
 from src.symbol_tables import SymbolTable, Symbol
 from src.tree_graphviz_visualizer import TreeGraphvizVisualizer
@@ -20,6 +21,13 @@ class ScopeTreeTestCase(unittest.TestCase):
         table.insert = insert
 
         return table
+
+    @staticmethod
+    def __create_dir_if_not_exist(path: pathlib.Path):
+        if path.is_dir():
+            return
+
+        path.mkdir()
 
     @staticmethod
     def __generate_graphviz_file(root: ScopeNode, output_file_path: pathlib.Path):
@@ -71,4 +79,5 @@ class ScopeTreeTestCase(unittest.TestCase):
 
         self.assertEqual(tree.look_up(symbol_id), None)
         path_dir = pathlib.Path('tests', 'assets', 'dot_files')
+        self.__create_dir_if_not_exist(path_dir)
         self.__generate_graphviz_file(tree.root, path_dir.joinpath('test_scope.dot'))

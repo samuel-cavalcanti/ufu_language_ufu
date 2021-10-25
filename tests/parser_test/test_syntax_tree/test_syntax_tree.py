@@ -1,8 +1,8 @@
+import pathlib
 import unittest
 
-from src.ufu_parser.syntax_tree import SyntaxTree, SyntaxNode
-
 from src.tree_graphviz_visualizer import TreeGraphvizVisualizer
+from src.ufu_parser.syntax_tree import SyntaxTree, SyntaxNode
 
 
 class SyntaxTreeCase(unittest.TestCase):
@@ -38,6 +38,14 @@ class SyntaxTreeCase(unittest.TestCase):
         visualizer = TreeGraphvizVisualizer()
 
         content_file = visualizer.generate_graphviz_file(tree.root)
-
-        with open('tests/assets/dot_files/scope_tree.dot', 'w') as file:
+        path_dir = pathlib.Path('tests', 'assets', 'dot_files')
+        self.__create_dir_if_not_exist(path_dir)
+        with open(path_dir.joinpath('scope_tree.dot'), 'w') as file:
             file.write(content_file)
+
+    @staticmethod
+    def __create_dir_if_not_exist(path: pathlib.Path):
+        if path.is_dir():
+            return
+
+        path.mkdir()

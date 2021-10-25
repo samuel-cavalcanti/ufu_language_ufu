@@ -83,6 +83,8 @@ class ScannerAndParserTestCase(unittest.TestCase):
 
             tree = parser.run()
 
+            self.__create_dir_if_not_exist(directory)
+            self.__create_dir_if_not_exist(syntactic_tree_dot_dir.parent)
             self.__create_dir_if_not_exist(syntactic_tree_dot_dir)
             self.__create_dir_if_not_exist(scope_tree_dot_dir)
 
