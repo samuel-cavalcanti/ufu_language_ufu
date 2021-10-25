@@ -1,2 +1,2 @@
-from .scope_detection import ScopeDetection
+from .scope_detection import ScopeDetection, ScopeException
 from .scope_detection_parser_plugin import ScopeDetectionPlugin

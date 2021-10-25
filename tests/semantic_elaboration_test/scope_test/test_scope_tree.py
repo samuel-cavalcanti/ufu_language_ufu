@@ -72,7 +72,3 @@ class ScopeTreeTestCase(unittest.TestCase):
         self.assertEqual(tree.look_up(symbol_id), None)
         path_dir = pathlib.Path('tests', 'assets', 'dot_files')
         self.__generate_graphviz_file(tree.root, path_dir.joinpath('test_scope.dot'))
-
-
-if __name__ == '__main__':
-    unittest.main()

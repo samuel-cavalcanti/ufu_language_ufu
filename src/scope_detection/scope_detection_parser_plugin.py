@@ -40,12 +40,10 @@ class ScopeDetectionPlugin:
         for variable_id in ids:
             self.scope_detection.insert_symbol_on_current_scope(Symbol(variable_type, variable_id, ''))
 
-        print(f"type: {variable_type} ids: {ids}")
-
     def __verify_id(self, node: SyntaxNode):
         information: dict = node.information
 
-        variable_id: Optional[str] = information.get(UfuTokenType.ID)
+        variable_id: Optional[str] = information.get(UfuTokenType.ID.value)
         """
             um node pode ou não conter um uma variável ID
             como no caso do símbolo não terminal Fator,

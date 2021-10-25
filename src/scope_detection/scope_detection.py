@@ -6,6 +6,10 @@ from src.ufu_token import UfuTokenType
 from typing import Optional
 
 
+class ScopeException(Exception):
+    pass
+
+
 class ScopeDetection:
     scope_tree: Optional[ScopeTree]
 
@@ -13,10 +17,13 @@ class ScopeDetection:
         self.scope_tree = None
 
     def verify_variable_declaration(self, variable_id: str):
-        if self.scope_tree.look_up(variable_id):
+
+        symbol = self.scope_tree.look_up(variable_id)
+
+        if symbol:
             return
 
-        raise Exception(f"Variable not declared: {variable_id}")
+        raise ScopeException(f"Variable not declared: {variable_id}")
 
     def new_scope(self, name: str):
         if self.scope_tree is None:

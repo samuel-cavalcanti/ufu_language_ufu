@@ -1,2 +1,3 @@
-from .tree_graphviz_visualizer import TreeGraphvizVisualizer
 from .graphviz_node import GraphvizNode
+from .graphviz_node_wrapper import GraphvizNodeWrapper
+from .tree_graphviz_visualizer import TreeGraphvizVisualizer
