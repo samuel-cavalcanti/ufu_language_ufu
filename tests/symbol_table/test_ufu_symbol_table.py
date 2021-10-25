@@ -17,7 +17,3 @@ class UFUSymbolTableTestCase(unittest.TestCase):
             symbol_table.insert(symbol)
 
         self.assertEqual(symbol, symbol_table.get(symbol_id))
-
-
-if __name__ == '__main__':
-    unittest.main()
