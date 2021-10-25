@@ -3,7 +3,7 @@ from src.ufu_parser.parser_observer import Observer, ObserverBuilder
 from src.ufu_parser.syntax_tree import SyntaxNode
 from src.ufu_parser.syntactic_graphs.componets import *
 from .scope_detection import ScopeDetection
-from ufu_token import UfuTokenType
+from src.ufu_token import UfuTokenType
 from typing import Optional
 from src.symbol_tables import Symbol
 
