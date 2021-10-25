@@ -1,4 +1,4 @@
-from typing import Protocol, Callable
+from typing import Protocol
 
 from src.ufu_parser.syntax_tree import SyntaxNode
 from .observer import Observer

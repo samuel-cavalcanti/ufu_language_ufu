@@ -18,8 +18,6 @@ class ScannerConsumer:
         self.__current_token = scanner.get_token()
         self.parser_subject = subject
 
-        print(f"current token {self.__current_token}")
-
     def eat(self, expected_type: UfuTokenType) -> Optional[UfuToken]:
         if expected_type == self.__current_token.type:
             token = self.__current_token

@@ -10,21 +10,15 @@ class IdOuConstante:
 
     def parse(self, consumer: ScannerConsumer) -> Optional[SyntaxNode]:
 
-        node = SyntaxNode(self.__class__.__name__)
+        for type_token in [UfuTokenType.ID, UfuTokenType.CONST_INT, UfuTokenType.CONST_REAL]:
+            token = consumer.eat(type_token)
+            if token:
+                node = SyntaxNode.from_ufu_token(token)
+                consumer.parser_subject.on_complete(type(self), node)
+                return node
 
-        if consumer.eat(UfuTokenType.ID):
-            node.children.append(SyntaxNode(UfuTokenType.ID.name))
-            return node
-
-        if consumer.eat(UfuTokenType.CONST_INT):
-            node.children.append(SyntaxNode(UfuTokenType.CONST_INT.name))
-            return node
-
-        if consumer.eat(UfuTokenType.CONST_REAL):
-            node.children.append(SyntaxNode(UfuTokenType.CONST_REAL.name))
-            return node
-
-        consumer.eat_or_exception(UfuTokenType.CONST_ASCII)
-        node.children.append(SyntaxNode(UfuTokenType.CONST_ASCII.name))
+        token = consumer.eat_or_exception(UfuTokenType.CONST_ASCII)
+        node = SyntaxNode.from_ufu_token(token)
+        consumer.parser_subject.on_complete(type(self), node)
 
         return node

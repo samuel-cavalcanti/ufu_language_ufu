@@ -4,7 +4,7 @@ from src.ufu_scanner.scanner import Scanner
 from src.ufu_parser.syntactic_graphs.componets import *
 from src.ufu_parser.scanner_consumer import ScannerConsumer
 from src.ufu_parser.syntax_tree import SyntaxNode, SyntaxTree
-from src.ufu_parser.parser_observer import Subject, ParserSubject
+from src.ufu_parser.parser_observer import Subject, ParserSubject, Observer
 
 
 class UfuParser:
@@ -16,15 +16,16 @@ class UfuParser:
         self.__scanner = scanner
         self.__init_graphs()
         self.__connect_graphs()
+        self.__subject = ParserSubject()
 
     def run(self) -> SyntaxTree:
-        self.__consumer = ScannerConsumer(self.__scanner, ParserSubject())
+        self.__consumer = ScannerConsumer(self.__scanner, self.__subject)
         root = self.__sofware.parse(self.__consumer)
 
         return SyntaxTree(root)
 
-    def register_observer(self, graph: type, callback: Callable[[SyntaxNode], None]):
-        pass
+    def register_observer(self, graph: type, observer: Observer):
+        self.__subject.attach(graph, observer)
 
     def __init_graphs(self):
         self.__sofware = Software()

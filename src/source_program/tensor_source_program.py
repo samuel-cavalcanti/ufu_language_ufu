@@ -14,10 +14,8 @@ class TensorSourceProgram:
         for line in lines:
             char_array = [char for char in line]
             char_matrix.append(np.array(char_array, dtype=object))
-            # char_matrix += char_array
 
         self.__tensor = np.array(char_matrix, dtype=object)
-        # self.__tensor = char_matrix
 
         self.__current_col = 0
         self.__current_row = 0

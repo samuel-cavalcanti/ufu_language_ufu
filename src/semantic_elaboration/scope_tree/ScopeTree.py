@@ -20,6 +20,7 @@ class ScopeTree:
                          level=self.current_scope.level + 1,
                          parent=self.current_scope)
 
+        self.current_scope.children.append(node)
         self.current_scope = node
 
     def back_scope(self):
@@ -28,6 +29,9 @@ class ScopeTree:
 
     def look_up(self, variable_id: str) -> Optional[Symbol]:
         return self.__get_symbol(variable_id, self.current_scope)
+
+    def insert_symbol(self, symbol: Symbol):
+        self.current_scope.table.insert(symbol)
 
     def __get_symbol(self, variable_id: str, node: ScopeNode) -> Optional[Symbol]:
         symbol = node.table.get(variable_id)

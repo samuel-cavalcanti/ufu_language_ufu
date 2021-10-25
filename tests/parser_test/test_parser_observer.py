@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from src.ufu_parser.parser_observer import ParserSubject, SubjectException, Subject
+from src.ufu_parser.parser_observer import ParserSubject, SubjectException, Subject, ObserverBuilder
 from src.ufu_parser.syntax_tree import SyntaxNode
 from src.ufu_parser.syntactic_graphs.componets import *
 
@@ -12,11 +12,13 @@ class TestParserObserverCase(unittest.TestCase):
         name = 'test'
         another_name = 'test2'
 
-        observer = mock.MagicMock()
-        observer.on_next = lambda node: self.assertEqual(node.name, name)
+        observer = ObserverBuilder() \
+            .set_on_next(lambda node: self.assertEqual(node.name, name)) \
+            .build()
 
-        error_observer = mock.MagicMock()
-        error_observer.on_next = lambda node: self.assertEqual(node.name, another_name)
+        error_observer = ObserverBuilder() \
+            .set_on_next(lambda node: self.assertEqual(node.name, another_name)) \
+            .build()
 
         subject.attach(DeclaracaoDeVariavel, observer)
         subject.attach(DeclaracaoDeVariavel, observer)

@@ -1,5 +1,4 @@
 from typing import Protocol, Optional
-
 from .symbol import Symbol
 
 

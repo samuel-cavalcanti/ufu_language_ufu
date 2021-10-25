@@ -1,5 +1,6 @@
-from typing import Any, Optional
+from typing import Optional
 from src.ufu_token import UfuToken
+from src.tree_graphviz_visualizer import GraphvizNode
 
 
 class SyntaxNode:
@@ -7,14 +8,17 @@ class SyntaxNode:
     children: list
     information = Optional[dict]
 
-    def __init__(self, name: str, information=None):
+    def __init__(self, name: str, information: Optional[dict] = None):
         self.name = name
         self.children = list()
         self.information = information
 
+    def to_graphviz_node(self) -> GraphvizNode:
+        return GraphvizNode(name=self.name, children=self.children, information=self.information, uuid=id(self))
+
     @staticmethod
     def from_ufu_token(token: UfuToken):
-        return SyntaxNode(token.type.name, token.content)
+        return SyntaxNode(token.type.name, information={token.type.value: token.content})
 
     def __str__(self):
-        return f"name: {self.name} children: {self.children}"
+        return f"name: {self.name} children: {self.children} information: {self.information}"

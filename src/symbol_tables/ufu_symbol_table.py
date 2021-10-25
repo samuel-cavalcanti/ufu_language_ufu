@@ -5,10 +5,12 @@ from typing import Dict, Optional, List
 
 class UFUSymbolTable:
     __table = Dict[str, Symbol]
-    __current_table: int
 
     def __init__(self):
         self.__table = dict()
+
+    def __str__(self) -> str:
+        return str(self.__table)
 
     def insert(self, symbol: Symbol):
         s: Optional[Symbol] = self.__table.get(symbol.name)

@@ -24,8 +24,8 @@ class DeclaracaoDeVariavel:
 
     def __create_syntax_node(self, lista_ids: SyntaxNode, type_variable: UfuToken) -> SyntaxNode:
         attributes_node = {
-            type_variable.type.name: type_variable.content,
-            lista_ids.name: [node.information.content for node in lista_ids.children],  # ListaIDS:[id,id,... ]
+            type_variable.type.value: type_variable.content,
+            UfuTokenType.ID.value: [node.information.content for node in lista_ids.children],  # ListaIDS:[id,id,... ]
         }
         node = SyntaxNode(self.__class__.__name__, information=attributes_node)
         node.children.append(SyntaxNode.from_ufu_token(type_variable))
