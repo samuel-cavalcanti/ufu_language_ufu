@@ -29,12 +29,18 @@ Cada branch é uma etapa do projeto, e para mim projeto começou de fato na segu
 
 ## Referencias
 
-- Livro Texto:  AHO, A.; et al. Compiladores: Princípios, Técnicas e Ferramentas, 2a. ed. Pearson, 2007. 
+- Livro Texto: AHO, A.; et al. Compiladores: Princípios, Técnicas e Ferramentas, 2a. ed. Pearson, 2007. 
 
 - [Livro On-line:  Torben gidius Mogensen, Basics of Compiler Design](http://hjemmesider.diku.dk/~torbenm/Basics/basics_lulu2.pdf) 
 
-- [Disponível em: https://ruslanspivak.com/lsbasi-part11/ e https://ruslanspivak.com/lsbasi-part13/
+- [Let’s Build A Simple Interpreter part 11](https://ruslanspivak.com/lsbasi-part11/)
+
+- [Let’s Build A Simple Interpreter part 13](https://ruslanspivak.com/lsbasi-part13)
 
 - [Lucrédio, Daniel -  Tópicos de compiladores](http://www2.dc.ufscar.br/~daniel/courses.html)
 
-- https://cmapspublic3.ihmc.us/rid=1RXR6L72G-1HMRFBC-1H58/Tabela%20de%20s%C3%ADmbolos.cmap
+
+
+
+
+![](https://cmapspublic3.ihmc.us/rid=1RXR6L72G-1HMRFBC-1H58/Tabela%20de%20s%C3%ADmbolos.cmap?rid=1RXR6L72G-1HMRFBC-1H58&partName=htmljpeg)
