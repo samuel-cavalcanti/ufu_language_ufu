@@ -1,8 +1,8 @@
 import unittest
-from unittest import mock
+
 from src.ufu_parser.parser_observer import ParserSubject, SubjectException, Subject, ObserverBuilder
-from src.ufu_parser.syntax_tree import SyntaxNode
 from src.ufu_parser.syntactic_graphs.componets import *
+from src.ufu_parser.syntax_tree import SyntaxNode
 
 
 class TestParserObserverCase(unittest.TestCase):
@@ -38,7 +38,3 @@ class TestParserObserverCase(unittest.TestCase):
 
         with self.assertRaises(SubjectException):
             subject.attach(Subject, error_observer)
-
-
-if __name__ == '__main__':
-    unittest.main()
